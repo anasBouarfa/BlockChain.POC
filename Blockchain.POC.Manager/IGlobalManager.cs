@@ -44,6 +44,8 @@ namespace Blockchain.POC.Manager
 
         double GetAccountBalance(BlockChain chain, string address);
 
+        bool IsAccountAddressValid(BlockChain chain, string address);
+
         Account GetAccountByAddress(string address);
 
         #endregion Account methods

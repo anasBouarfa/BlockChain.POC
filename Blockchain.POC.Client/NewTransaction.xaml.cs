@@ -31,10 +31,14 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (!_chain.PendingTransactions.IsNullOrEmpty())
-                _chain.PendingTransactions.Add(new Transaction(App.Current.Properties["User"] as string, _globalManager.GetAccountByAddress(Address.Text).Address, double.Parse(Amount.Text)));
-            else
-                _chain.PendingTransactions = new List<Transaction>() { new Transaction(App.Current.Properties["User"] as string, _globalManager.GetAccountByAddress(Address.Text).Address, double.Parse(Amount.Text)) };
+            if(_globalManager.IsAccountAddressValid(_chain, Address.Text))
+            {
+                if (!_chain.PendingTransactions.IsNullOrEmpty())
+                    _chain.PendingTransactions.Add(new Transaction(App.Current.Properties["User"] as string, Address.Text, double.Parse(Amount.Text)));
+                else
+                    _chain.PendingTransactions = new List<Transaction> { new Transaction(App.Current.Properties["User"] as string, Address.Text, double.Parse(Amount.Text)) };
+            }
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

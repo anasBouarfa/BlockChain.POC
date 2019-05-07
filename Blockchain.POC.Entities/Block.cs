@@ -13,7 +13,6 @@ namespace Blockchain.POC.Entities
         public string PreviousHash { get; set; }
         public string Hash { get; set; }
         public List<Transaction> Transactions { get; set; }
-        public List<Account> Accounts { get; set; }
         public int Nonce { get; set; } = 0;
     }
 }

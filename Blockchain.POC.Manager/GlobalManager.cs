@@ -40,12 +40,12 @@ namespace Blockchain.POC.Manager
 
         public string IsAccountLoginValid(BlockChain chain, string username, string password)
         {
-            return chain.Blocks.SelectMany(b => b.Accounts).FirstOrDefault(a => a.HashedPassword == password.GetHash() && a.Username == username).Address;
+            return chain.Accounts.FirstOrDefault(a => a.HashedPassword == password.GetHash() && a.Username == username).Address;
         }
 
         public bool IsUsernameTaken(BlockChain chain, string username)
         {
-            return chain.Blocks.SelectMany(s => s.Accounts).Any(a => a.Username == username);
+            return chain.Accounts.Any(a => a.Username == username);
         }
 
         public Account CreateAccount(string username, string password, string firstname, string lastname, DateTime dateOfBirth)
@@ -73,12 +73,22 @@ namespace Blockchain.POC.Manager
 
         public Account GetAccountByAddress(BlockChain chain, string address)
         {
-            return chain.Blocks.SelectMany(s => s.Accounts).FirstOrDefault(a => a.Username == address);
+            return chain.Accounts.FirstOrDefault(a => a.Username == address);
         }
 
         public Account GetAccountByAddress(string address)
         {
             throw new NotImplementedException();
+        }
+
+        public bool IsAccountAddressValid(BlockChain chain, string address)
+        {
+            if(chain != null)
+            {
+                return chain.Accounts.Any(a => a.Address == address);
+            }
+
+            return false;
         }
 
         #endregion Account methods
@@ -153,7 +163,7 @@ namespace Blockchain.POC.Manager
 
         public string getUserNameByAddress(BlockChain chain, string address)
         {
-            var account = chain.Blocks.SelectMany(s => s.Accounts).FirstOrDefault(a => a.Address == address);
+            var account = chain.Accounts.FirstOrDefault(a => a.Address == address);
 
             return account.FirstName + " " + account.LastName;
         }
