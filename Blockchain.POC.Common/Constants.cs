@@ -14,12 +14,12 @@ namespace Blockchain.POC.Common
         public const string Port = "Port";
 
         /// <summary>
-        /// a dictionnary of each url as key and the websocket as value that the current client is connected to
+        /// A dictionnary of each url as key and the websocket as value that the current client is connected to
         /// </summary>
         public const string PortUrlWebSockets = "urlWebSockets";
 
         /// <summary>
-        /// the current user address
+        /// The current user address
         /// </summary>
         public const string UserAddress = "User";
 

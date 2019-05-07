@@ -11,7 +11,7 @@ namespace Blockchain.POC.P2PClient
     public class Client
     {
         private IGlobalManager _globalManager;
-        private IDictionary<string, WebSocket> urlwebSockets = new Dictionary<string, WebSocket>();
+        public IDictionary<string, WebSocket> urlwebSockets { get; set; }
 
         public Client(IGlobalManager globalManager)
         {
@@ -66,11 +66,18 @@ namespace Blockchain.POC.P2PClient
             }
         }
 
-        public void Broadcast(string data)
+        public void BroadcastChain(BlockChain chain)
         {
             foreach (var endpoint in urlwebSockets)
             {
-                endpoint.Value.Send(data);
+                try
+                {
+                    endpoint.Value.Send(JsonConvert.SerializeObject(chain));
+                }
+                catch
+                {
+
+                }
             }
         }
 

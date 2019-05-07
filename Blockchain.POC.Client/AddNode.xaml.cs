@@ -43,13 +43,13 @@ namespace Blockchain.POC.Client
 
                 App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
-                MainWindow mainWindow = new MainWindow
+                Home homeWindow = new Home
                 {
                     Left = this.Left,
                     Top = this.Top
                 };
 
-                mainWindow.Show();
+                homeWindow.Show();
 
                 System.Threading.Thread.Sleep(200);
 

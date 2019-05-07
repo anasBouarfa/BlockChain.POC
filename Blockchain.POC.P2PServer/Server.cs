@@ -46,11 +46,9 @@ namespace Blockchain.POC.P2PServer
 
                 if (!_globalManager.IsLocalBlockChainUpToDate(_globalManager.LoadLocalBlockChain(), remoteChain))
                 {
-
+                    _globalManager.SaveBlockChain(remoteChain);
                 }
             }
         }
-
-
     }
 }

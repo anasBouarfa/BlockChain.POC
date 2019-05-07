@@ -1,7 +1,9 @@
-﻿using Blockchain.POC.Entities;
+﻿using Blockchain.POC.Common;
+using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
+using WebSocketSharp;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,12 @@ namespace Blockchain.POC.Client
                     _chain.PendingTransactions.Add(new Transaction(App.Current.Properties["User"] as string, Address.Text, double.Parse(Amount.Text)));
                 else
                     _chain.PendingTransactions = new List<Transaction> { new Transaction(App.Current.Properties["User"] as string, Address.Text, double.Parse(Amount.Text)) };
+
+                P2PClient.Client client = new P2PClient.Client(_globalManager)
+                {
+                    urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
+                };
+                client.BroadcastChain(_chain);
             }
 
         }
