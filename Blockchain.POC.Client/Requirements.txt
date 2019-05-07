@@ -1,0 +1,4 @@
+﻿1- account creation (view)
+2- see Balance, and history (getAccountUsernameByAddress, getAccountTransactionsHistory)
+3- Actions view (see balance, make a transaction...)
+4- 
