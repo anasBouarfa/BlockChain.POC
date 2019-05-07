@@ -20,6 +20,7 @@
             <Button Content="My Balance" Margin="10 15 10 0" Background="SkyBlue" FontWeight="DemiBold" Click="MyBalance_Click"/>
             <Button Content="My transactions"  Margin="10 15 10 0" Background="YellowGreen" FontWeight="DemiBold" Click="MyTransactions_Click"/>
             <Button Content="New transaction"  Margin="10 15 10 0" Background="LightSeaGreen" FontWeight="DemiBold" Click="NewTransaction_Click"/>
+            <Button Content="Connect to another node"  Margin="10 15 10 0" FontWeight="DemiBold" Background="CadetBlue" Click="ConnectToNode_Click"/>
             <Button Content="Mine"  Margin="10 15 10 0" FontWeight="DemiBold" Background="Cornsilk" Click="Mine_Click"/>
             <Button Content="Log Out"  Margin="10 15 10 0" FontWeight="DemiBold" Click="LogOut_Click"/>
         </StackPanel>

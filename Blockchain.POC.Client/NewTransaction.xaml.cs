@@ -26,6 +26,7 @@ namespace Blockchain.POC.Client
         public NewTransaction()
         {
             _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
+            _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
         }
 

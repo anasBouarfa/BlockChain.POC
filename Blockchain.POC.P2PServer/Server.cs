@@ -13,7 +13,6 @@ namespace Blockchain.POC.P2PServer
 {
     public class Server : WebSocketBehavior
     {
-        IDictionary<string, WebSocketServer> wsDict = new Dictionary<string, WebSocketServer>();
         WebSocketServer wss = null;
         private IGlobalManager _globalManager;
         private int port;
@@ -45,61 +44,13 @@ namespace Blockchain.POC.P2PServer
             {
                 BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
 
-                if (_globalManager.IsBlockChainValid(remoteChain) && remoteChain.Blocks.Count >10 /*localChainCount*/)
+                if (!_globalManager.IsLocalBlockChainUpToDate(_globalManager.LoadLocalBlockChain(), remoteChain))
                 {
-                    //List<Transaction> newTransactions = new List<Transaction>();
-                    //newTransactions.AddRange(remoteChain.PendingTransactions);
-                    //newTransactions.AddRange(Program.PhillyCoin.PendingTransactions);
 
-                    //remoteChain.PendingTransactions = newTransactions;
-                    //Program.PhillyCoin = remoteChain;
                 }
-
-                //if (!chainSynched)
-                //{
-                //    Send(JsonConvert.SerializeObject(Program.PhillyCoin));
-                //    chainSynched = true;
-                //}
             }
         }
 
-        //public void Send(string url, string data)
-        //{
-        //    foreach (var item in wsDict)
-        //    {
-        //        if (item.Key == url)
-        //        {
-        //            item.Value.Send(data);
-        //        }
-        //    }
-        //}
+
     }
-
-
-
-    //public void Broadcast(string data)
-    //{
-    //    foreach (var item in wsDict)
-    //    {
-    //        item.Value.Send(data);
-    //    }
-    //}
-
-    //public IList<string> GetServers()
-    //{
-    //    IList<string> servers = new List<string>();
-    //    foreach (var item in wsDict)
-    //    {
-    //        servers.Add(item.Key);
-    //    }
-    //    return servers;
-    //}
-
-    //public void Close()
-    //{
-    //    foreach (var item in wsDict)
-    //    {
-    //        item.Value.Close();
-    //    }
-    //}
 }

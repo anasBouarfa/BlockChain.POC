@@ -77,6 +77,11 @@ namespace Blockchain.POC.Client
             
         }
 
+        private void ConnectToNode_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Mine_Click(object sender, RoutedEventArgs e)
         {
 
