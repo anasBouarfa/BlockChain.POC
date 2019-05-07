@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
+using Blockchain.POC.Common;
 using Blockchain.POC.P2PServer;
 using Blockchain.POC.P2PClient;
 using WebSocketSharp;
@@ -62,7 +63,7 @@ namespace Blockchain.POC.Client
 
                 dictionnary.Add(url, client.Connect(url, chain));
 
-                App.Current.Properties["urlWebSockets"] = dictionnary;
+                App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
                 chain = _globalManager.LoadLocalBlockChain();
 
@@ -70,7 +71,7 @@ namespace Blockchain.POC.Client
 
                 if(!userHash.IsNullOrWhitespace())
                 {
-                    App.Current.Properties["User"] = userHash;
+                    App.Current.Properties[ApplicationPropertiesConstants.UserAddress] = userHash;
 
                     ChangeWindow(true, userHash);
                 }

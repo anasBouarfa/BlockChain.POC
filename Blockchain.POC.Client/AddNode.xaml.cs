@@ -6,6 +6,7 @@ using WebSocketSharp;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using Blockchain.POC.Common;
 
 namespace Blockchain.POC.Client
 {
@@ -36,11 +37,11 @@ namespace Blockchain.POC.Client
 
                 string url = $"ws://localhost:{int.Parse(Port.Text)}/BlockchainPOC";
 
-                var dictionnary = App.Current.Properties["urlWebSockets"] as Dictionary<string, WebSocket> ?? new Dictionary<string, WebSocket>();
+                var dictionnary = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket> ?? new Dictionary<string, WebSocket>();
 
                 dictionnary.Add(url, client.Connect(url, _globalManager.LoadLocalBlockChain()));
 
-                App.Current.Properties["urlWebSockets"] = dictionnary;
+                App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
                 MainWindow mainWindow = new MainWindow
                 {
