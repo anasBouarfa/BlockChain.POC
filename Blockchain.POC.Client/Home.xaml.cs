@@ -76,5 +76,10 @@ namespace Blockchain.POC.Client
             this._chain = _globalManager.LoadLocalBlockChain();
             
         }
+
+        private void Mine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
