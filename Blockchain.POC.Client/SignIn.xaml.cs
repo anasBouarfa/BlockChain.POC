@@ -1,4 +1,5 @@
-﻿using Blockchain.POC.Entities;
+﻿using Blockchain.POC.Common;
+using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WebSocketSharp;
 
 namespace Blockchain.POC.Client
 {
@@ -35,10 +37,15 @@ namespace Blockchain.POC.Client
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             var account  = _globalManager.CreateAccount(Username.Text, Password.Password, Firstname.Text, Lastname.Text, DateTime.Parse(DateOfBirth.Text));
+            _chain.Accounts?.Add(account);
+            _chain.PendingTransactions?.Add(new Transaction(null, account.Address, 1));
 
-            _chain.PendingTransactions?.Add(new Transaction(null, account.Address, 10)
+            P2PClient.Client client = new P2PClient.Client(_globalManager)
+            {
+                urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
+            };
 
-            );
+            client.BroadcastChain(_chain);
         }
     }
 }

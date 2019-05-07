@@ -43,10 +43,18 @@ namespace Blockchain.POC.P2PServer
             else
             {
                 BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
+                BlockChain localChain = _globalManager.LoadLocalBlockChain();
 
-                if (!_globalManager.IsLocalBlockChainUpToDate(_globalManager.LoadLocalBlockChain(), remoteChain))
+                if (!_globalManager.IsLocalBlockChainUpToDate(localChain, remoteChain))
                 {
                     _globalManager.SaveBlockChain(remoteChain);
+                }
+                else
+                {
+                    if (remoteChain.Accounts.Count > localChain.Accounts.Count)
+                    {
+                        _globalManager.SaveBlockChain(remoteChain);
+                    }
                 }
             }
         }
