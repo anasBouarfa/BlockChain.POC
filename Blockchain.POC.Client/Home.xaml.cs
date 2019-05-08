@@ -72,12 +72,6 @@ namespace Blockchain.POC.Client
             this.Close();
         }
 
-        private void LoadBlockChain()
-        {
-            this._chain = _globalManager.LoadLocalBlockChain();
-            
-        }
-
         private void ConnectToNode_Click(object sender, RoutedEventArgs e)
         {
             new AddNode
@@ -86,7 +80,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(200);
+            System.Threading.Thread.Sleep(250);
 
             this.Close();
         }
