@@ -28,7 +28,7 @@ namespace Blockchain.POC.Client
 
         public SignIn()
         {
-            _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
+            _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
             _chain = _globalManager.LoadLocalBlockChain();
 
             InitializeComponent();

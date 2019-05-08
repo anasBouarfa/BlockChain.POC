@@ -27,14 +27,14 @@ namespace Blockchain.POC.Client
         private BlockChain _chain;
         public NewTransaction()
         {
-            _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
+            _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
             _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if(_globalManager.IsAccountAddressValid(_chain, Address.Text))
+            if(_globalManager.IsAccountAddressValid(_chain, Address.Text) && Address.Text != App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string)
             {
                 if (!_chain.PendingTransactions.IsNullOrEmpty())
                     _chain.PendingTransactions.Add(new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, Address.Text, double.Parse(Amount.Text)));

@@ -52,19 +52,24 @@ namespace Blockchain.POC.Client
 
         private void NewTransaction_Click(object sender, RoutedEventArgs e)
         {
-            //TODO 
+            new NewTransaction
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
 
+            System.Threading.Thread.Sleep(250);
 
+            this.Close();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow
+            new MainWindow
             {
                 Left = this.Left,
                 Top = this.Top
-            };
-            mainWindow.Show();
+            }.Show();
 
             System.Threading.Thread.Sleep(250);
 
@@ -79,7 +84,15 @@ namespace Blockchain.POC.Client
 
         private void ConnectToNode_Click(object sender, RoutedEventArgs e)
         {
+            new AddNode
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
 
+            System.Threading.Thread.Sleep(200);
+
+            this.Close();
         }
 
         private void Mine_Click(object sender, RoutedEventArgs e)

@@ -147,21 +147,16 @@ namespace Blockchain.POC.Manager
 
         public List<Transaction> GetTransactionsByAddress(BlockChain chain, string address)
         {
-            IEnumerable<Transaction> transactions = chain.Blocks.SelectMany(t => t.Transactions).Where(t => t.ToAddress == address || t.FromAddress == address);
+            IEnumerable<Transaction> recievedTransactions = chain.Blocks.SelectMany(t => t.Transactions).Where(t => t.ToAddress == address);
+            IEnumerable<Transaction> createdTransactions = chain.Blocks.SelectMany(t => t.Transactions).Where(t => t.FromAddress == address);
 
-            IEnumerable<string> addresses = transactions.Select(s => s.FromAddress).Union(transactions.Select(s => s.ToAddress)).Distinct();
+            recievedTransactions = recievedTransactions.Select(s => new Transaction(s.FromAddress ?? "system", "You", s.Amount));
+            createdTransactions = createdTransactions.Select(s => new Transaction("You", s.ToAddress, s.Amount));
 
-            IDictionary<string, string> dict = new Dictionary<string, string>();
-
-            foreach(var username in addresses)
-            {
-                dict.Add(username, getUserNameByAddress(chain, username));
-            }
-
-            return transactions.Select(t => new Transaction(dict[t.FromAddress], dict[t.ToAddress], t.Amount)).ToList();
+            return createdTransactions.Union(recievedTransactions).OrderByDescending(o => o.CreationDate).ToList();
         }
 
-        public string getUserNameByAddress(BlockChain chain, string address)
+        public string GetUserNameByAddress(BlockChain chain, string address)
         {
             var account = chain.Accounts.FirstOrDefault(a => a.Address == address);
 

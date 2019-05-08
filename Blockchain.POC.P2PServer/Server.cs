@@ -53,7 +53,8 @@ namespace Blockchain.POC.P2PServer
                 {
                     if (remoteChain.Accounts.Count > localChain.Accounts.Count)
                     {
-                        _globalManager.SaveBlockChain(remoteChain);
+                        localChain.Accounts = remoteChain.Accounts;
+                        _globalManager.SaveBlockChain(localChain);
                     }
                 }
             }
