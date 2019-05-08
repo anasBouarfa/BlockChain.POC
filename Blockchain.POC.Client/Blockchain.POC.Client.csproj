@@ -65,6 +65,9 @@
     <Compile Include="Error.xaml.cs">
       <DependentUpon>Error.xaml</DependentUpon>
     </Compile>
+    <Compile Include="History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
