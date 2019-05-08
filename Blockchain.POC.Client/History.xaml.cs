@@ -34,7 +34,15 @@ namespace Blockchain.POC.Client
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
+            new Home()
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
 
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
     }
 }

@@ -16,7 +16,7 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55"/>
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock Text="Your transactions" FontSize="20" Margin="10 20 0 0" FontWeight="Bold"/>
+            <TextBlock Text="Your transactions" FontSize="20" Margin="10 20 0 20" FontWeight="Bold"/>
             <DataGrid Name="TransactionsDG" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Width="350" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Binding="{Binding FromAddress}" Width="*" />
