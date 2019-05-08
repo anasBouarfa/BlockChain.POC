@@ -13,25 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Blockchain.POC.Entities;
+using Blockchain.POC.Common;
 
 namespace Blockchain.POC.Client
 {
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class Home : BaseWindow
     {
         private string address;
-        private int myPort;
-        private IGlobalManager _globalManager;
-        private BlockChain _chain;
 
         public Home(string address)
         {
             this.address = address;
             FullName.Text = address;
-            _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
-            LoadBlockChain();
             InitializeComponent();
         }
 

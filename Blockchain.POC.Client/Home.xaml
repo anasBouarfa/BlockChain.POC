@@ -1,4 +1,4 @@
-﻿<Window x:Class="Blockchain.POC.Client.Home"
+﻿<local:BaseWindow x:Class="Blockchain.POC.Client.Home"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -25,4 +25,4 @@
             <Button Content="Log Out"  Margin="10 15 10 0" FontWeight="DemiBold" Click="LogOut_Click"/>
         </StackPanel>
     </Border>
-</Window>
+</local:BaseWindow>

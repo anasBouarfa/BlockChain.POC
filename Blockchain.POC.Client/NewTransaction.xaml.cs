@@ -21,14 +21,10 @@ namespace Blockchain.POC.Client
     /// <summary>
     /// Interaction logic for NewTransaction.xaml
     /// </summary>
-    public partial class NewTransaction : Window
+    public partial class NewTransaction : BaseWindow
     {
-        private IGlobalManager _globalManager;
-        private BlockChain _chain;
         public NewTransaction()
         {
-            _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
-            _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
         }
 

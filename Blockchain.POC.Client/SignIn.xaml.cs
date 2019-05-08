@@ -21,16 +21,10 @@ namespace Blockchain.POC.Client
     /// <summary>
     /// Interaction logic for SignIn.xaml
     /// </summary>
-    public partial class SignIn : Window
-    {
-        private IGlobalManager _globalManager;
-        private BlockChain _chain;
-
-        public SignIn()
+    public partial class SignIn : BaseWindow
+    {   
+        public SignIn() : base()
         {
-            _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
-            _chain = _globalManager.LoadLocalBlockChain();
-
             InitializeComponent();
         }
 

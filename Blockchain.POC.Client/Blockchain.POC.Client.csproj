@@ -61,6 +61,7 @@
     <Compile Include="AddNode.xaml.cs">
       <DependentUpon>AddNode.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BaseWindow.cs" />
     <Compile Include="Error.xaml.cs">
       <DependentUpon>Error.xaml</DependentUpon>
     </Compile>
