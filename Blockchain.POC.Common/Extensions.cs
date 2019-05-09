@@ -80,49 +80,6 @@ namespace System
             return JsonConvert.SerializeObject(text).GetHash();
         }
 
-        //public static string Encrypt(this string chainCharacters, string key)
-        //{
-        //    if (chainCharacters == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(chainCharacters));
-        //    }
-
-        //    if (key == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(key));
-        //    }
-
-        //    var md5Algorithm = MD5CryptoServiceProvider.Create();
-
-        //    byte[] secretKey = md5Algorithm.ComputeHash(Encoding.UTF8.GetBytes(key));
-
-        //    var bcEngine = new AesCryptoServiceProvider();
-
-        //    var aa =AesCryptoServiceProvider.Create();
-
-        //    Org.BouncyCastle.Crypto.Engines.AesEngine()
-
-        //    aa.CreateEncryptor(secretKey, secretKey).
-
-
-        //    symmetricKeyAlgorithmProvider.Init(true, new CipherPa)
-
-        //    symmetricKeyAlgorithmProvider.CreateEncryptor().
-
-
-        //    ISymmetricKeyAlgorithmProvider symmetricKeyAlgorithmProvider = WinRTCrypto.SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithm.TripleDesEcbPkcs7);
-
-        //    using (ICryptographicKey cryptographicKey = symmetricKeyAlgorithmProvider.CreateSymmetricKey(secretKey))
-        //    {
-        //        using (ICryptoTransform iCryptoTransform = WinRTCrypto.CryptographicEngine.CreateEncryptor(cryptographicKey))
-        //        {
-        //            byte[] input = Encoding.UTF8.GetBytes(chainCharacters);
-        //            byte[] output = iCryptoTransform.TransformFinalBlock(input, 0, input.Length);
-
-        //            return Convert.ToBase64String(output, 0, output.Length);
-        //        }
-        //    }
-        //}
         public static string Encrypt(this string text)
         {
             SymmetricAlgorithm algorithm = DES.Create();

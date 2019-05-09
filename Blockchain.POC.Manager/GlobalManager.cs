@@ -10,7 +10,7 @@ namespace Blockchain.POC.Manager
 {
     public class GlobalManager : IGlobalManager
     {
-        private int usedPort;
+        private readonly int usedPort;
 
         public GlobalManager(int port)
         {
@@ -48,16 +48,18 @@ namespace Blockchain.POC.Manager
             return chain.Accounts.Any(a => a.Username == username);
         }
 
-        public Account CreateAccount(string username, string password, string firstname, string lastname, DateTime dateOfBirth)
+        public Account CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth)
         {
             if (!username.IsNullOrWhitespace() &&
                !password.IsNullOrWhitespace())
             {
-                //TODO :check if username exists
+                if(!chain.Accounts.Select(s => s.Username).Any(a => a == username.Encrypt()))
+                {
 
-                var account = new Account(username, password, firstname, lastname, dateOfBirth);
+                    var account = new Account(username, password, firstname, lastname, dateOfBirth);
 
-                return account;
+                    return account;
+                }
             }
 
             return null;
@@ -73,12 +75,7 @@ namespace Blockchain.POC.Manager
 
         public Account GetAccountByAddress(BlockChain chain, string address)
         {
-            return chain.Accounts.FirstOrDefault(a => a.Username == address);
-        }
-
-        public Account GetAccountByAddress(string address)
-        {
-            throw new NotImplementedException();
+            return chain.Accounts.FirstOrDefault(a => a.Address == address);
         }
 
         public bool IsAccountAddressValid(BlockChain chain, string address)

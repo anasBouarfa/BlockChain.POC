@@ -30,7 +30,7 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            var account  = _globalManager.CreateAccount(Username.Text, Password.Password, Firstname.Text, Lastname.Text, DateTime.Parse(DateOfBirth.Text));
+            var account  = _globalManager.CreateAccount(_chain, Username.Text, Password.Password, Firstname.Text, Lastname.Text, DateTime.Parse(DateOfBirth.Text));
             _chain.Accounts?.Add(account);
             _chain.PendingTransactions?.Add(new Transaction(null, account.Address, 1));
 
