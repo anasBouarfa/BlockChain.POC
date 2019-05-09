@@ -6,6 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
+using System.Text.RegularExpressions;
 
 namespace System
 {
@@ -26,6 +27,12 @@ namespace System
             {
                 return null;
             }
+        }
+
+        public static bool IsNumbers(this string text)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            return regex.IsMatch(text);
         }
 
         public static string GetJsonHash(this object text)

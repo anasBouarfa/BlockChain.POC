@@ -14,7 +14,7 @@ namespace Blockchain.POC.Common
         public const string Port = "Port";
 
         /// <summary>
-        /// A dictionnary of each url as key and the websocket as value that the current client is connected to
+        /// A dictionnary of each url as key and the websocket that the current client is connected to as value
         /// </summary>
         public const string PortUrlWebSockets = "urlWebSockets";
 

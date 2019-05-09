@@ -1,18 +1,8 @@
 ﻿using Blockchain.POC.P2PServer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using Blockchain.POC.Common;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Blockchain.POC.Client
 {
@@ -33,7 +23,7 @@ namespace Blockchain.POC.Client
                 Server server = new Server();
                 server.Start(int.Parse(Port.Text));
 
-                App.Current.Properties["Port"] = int.Parse(Port.Text);
+                App.Current.Properties[ApplicationPropertiesConstants.Port] = int.Parse(Port.Text);
 
                 MainWindow mainWindow = new MainWindow
                 {
@@ -47,6 +37,11 @@ namespace Blockchain.POC.Client
 
                 this.Close();
             }
+        }
+
+        protected void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = e.Text.IsNumbers();
         }
     }
 }

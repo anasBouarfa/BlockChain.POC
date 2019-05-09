@@ -1,23 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using Blockchain.POC.Common;
-using Blockchain.POC.P2PServer;
-using Blockchain.POC.P2PClient;
 using WebSocketSharp;
 
 namespace Blockchain.POC.Client
@@ -25,14 +12,10 @@ namespace Blockchain.POC.Client
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : BaseWindow
     {
-        private IGlobalManager _globalManager;
-
         public MainWindow()
         {
-            _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
-
             InitializeComponent();
         }
         
@@ -73,6 +56,11 @@ namespace Blockchain.POC.Client
 
                 }
             }
+        }
+
+        protected void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = e.Text.IsNumbers();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)

@@ -123,7 +123,7 @@ namespace Blockchain.POC.Manager
 
         public bool IsLocalBlockchainAvailable()
         {
-            return FileHelper.IsFileExistant(@"/Content/Blockchains/" + usedPort);
+            return FileHelper.IsFileExistant(@"Blockchains/" + usedPort);
         }
 
         public bool IsLocalBlockChainUpToDate(BlockChain localChain, BlockChain remoteChain)
@@ -133,12 +133,12 @@ namespace Blockchain.POC.Manager
 
         public BlockChain LoadLocalBlockChain()
         {
-            return FileHelper<BlockChain>.LoadObjectFromJson(@"Content/Blockchains/" + usedPort + ".json");
+            return FileHelper<BlockChain>.LoadObjectFromJson(@"Blockchains/" + usedPort + ".json");
         }
 
         public bool SaveBlockChain(BlockChain chain)
         {
-            return FileHelper<BlockChain>.CreateFileFromObject(chain, @"Content/Blockchains/", usedPort + ".json");
+            return FileHelper<BlockChain>.CreateFileFromObject(chain, @"Blockchains/", usedPort + ".json");
         }
 
         #endregion BlockChain methods
@@ -164,21 +164,5 @@ namespace Blockchain.POC.Manager
         }
 
         #endregion Transaction methods
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

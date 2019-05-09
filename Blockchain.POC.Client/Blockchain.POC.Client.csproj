@@ -187,8 +187,11 @@
   <ItemGroup>
     <Resource Include="Content\Images\logo.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Content\Blockchains\" />
+    <Resource Include="Blockchains\init.txt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
