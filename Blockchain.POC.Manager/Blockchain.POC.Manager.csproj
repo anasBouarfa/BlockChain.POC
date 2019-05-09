@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockChainManager.cs" />
+    <Compile Include="AccountManager.cs" />
     <Compile Include="GlobalManager.cs" />
     <Compile Include="IGlobalManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BlockManager.cs" />
+    <Compile Include="TransactionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blockchain.POC.Common\Blockchain.POC.Common.csproj">

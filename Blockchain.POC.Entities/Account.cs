@@ -32,7 +32,7 @@ namespace Blockchain.POC.Entities
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Username = username;
-            this.Address = (this.Username + this.FirstName + this.LastName).GetHash();
+            this.Address = (this.Username + this.FirstName + this.LastName + dateOfBirth.ToString()).GetHash();
             this.CreationDate = DateTime.Now;
             GetHashedPassword(password);
         }
