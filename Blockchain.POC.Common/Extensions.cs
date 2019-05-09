@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
-using Org.BouncyCastle.Crypto.Engines;
-using Org.BouncyCastle.Crypto.Paddings;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Configuration;
+using Blockchain.POC.Common;
 
 namespace System
 {
@@ -83,6 +85,55 @@ namespace System
         //        }
         //    }
         //}
+
+        public static string Crypt(this string text)
+        {
+            string result = null;
+
+            if (!String.IsNullOrEmpty(text))
+            {
+                byte[] plaintextBytes = Encoding.Unicode.GetBytes(text);
+
+                SymmetricAlgorithm symmetricAlgorithm = DES.Create();
+                
+                symmetricAlgorithm.Key = Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings[AppSettingKeyConstants.EncryptionKey]);
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, symmetricAlgorithm.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(plaintextBytes, 0, plaintextBytes.Length);
+                    }
+
+                    result = Encoding.Unicode.GetString(memoryStream.ToArray());
+                }
+            }
+
+            return result;
+        }
+
+        public static string Decrypt(this string text)
+        {
+            string result = null;
+
+            if (!String.IsNullOrEmpty(text))
+            {
+                byte[] encryptedBytes = Encoding.Unicode.GetBytes(text);
+
+                SymmetricAlgorithm symmetricAlgorithm = DES.Create();
+                symmetricAlgorithm.Key = Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings[AppSettingKeyConstants.EncryptionKey]);
+                using (MemoryStream memoryStream = new MemoryStream(encryptedBytes))
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, symmetricAlgorithm.CreateDecryptor(), CryptoStreamMode.Read))
+                    {
+                        byte[] decryptedBytes = new byte[encryptedBytes.Length];
+                        cryptoStream.Read(decryptedBytes, 0, decryptedBytes.Length);
+                        result = Encoding.Unicode.GetString(decryptedBytes);
+                    }
+                }
+            }
+
+            return result;
+        }
 
         public static string GetHash(this string text)
         {

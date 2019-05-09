@@ -54,76 +54,76 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Windows\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddNode.xaml.cs">
+    <Compile Include="Windows\AddNode.xaml.cs">
       <DependentUpon>AddNode.xaml</DependentUpon>
     </Compile>
     <Compile Include="BaseWindow.cs" />
-    <Compile Include="Error.xaml.cs">
+    <Compile Include="Windows\Error.xaml.cs">
       <DependentUpon>Error.xaml</DependentUpon>
     </Compile>
-    <Compile Include="History.xaml.cs">
+    <Compile Include="Windows\History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Home.xaml.cs">
+    <Compile Include="Windows\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewTransaction.xaml.cs">
+    <Compile Include="Windows\NewTransaction.xaml.cs">
       <DependentUpon>NewTransaction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SignIn.xaml.cs">
+    <Compile Include="Windows\SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Starting.xaml.cs">
+    <Compile Include="Windows\Starting.xaml.cs">
       <DependentUpon>Starting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Success.xaml.cs">
+    <Compile Include="Windows\Success.xaml.cs">
       <DependentUpon>Success.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddNode.xaml">
+    <Page Include="Windows\AddNode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Error.xaml">
+    <Page Include="Windows\Error.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="History.xaml">
+    <Page Include="Windows\History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
+    <Page Include="Windows\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewTransaction.xaml">
+    <Page Include="Windows\NewTransaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SignIn.xaml">
+    <Page Include="Windows\SignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Starting.xaml">
+    <Page Include="Windows\Starting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Success.xaml">
+    <Page Include="Windows\Success.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,4 +25,12 @@ namespace Blockchain.POC.Common
 
 
     }
+
+    class AppSettingKeyConstants
+    {
+        /// <summary>
+        ///  The secret encryption key used in the application
+        /// </summary>
+        public const string EncryptionKey = "EncryptionKey";
+    }
 }
