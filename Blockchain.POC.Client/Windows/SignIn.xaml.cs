@@ -30,16 +30,18 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            var account  = _globalManager.CreateAccount(_chain, Username.Text, Password.Password, Firstname.Text, Lastname.Text, DateTime.Parse(DateOfBirth.Text));
-            _chain.Accounts?.Add(account);
-            _chain.PendingTransactions?.Add(new Transaction(null, account.Address, 1));
+            _chain = _globalManager.CreateAccount(_chain, Username.Text, Password.Password, Firstname.Text, Lastname.Text, DateTime.Parse(DateOfBirth.Text));
 
-            P2PClient.Client client = new P2PClient.Client(_globalManager)
+            if(_chain != null)
             {
-                urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
-            };
+                //Broadcast
+                P2PClient.Client client = new P2PClient.Client(_globalManager)
+                {
+                    urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
+                };
 
-            client.BroadcastChain(_chain);
+                client.BroadcastChain(_chain);
+            }
         }
     }
 }

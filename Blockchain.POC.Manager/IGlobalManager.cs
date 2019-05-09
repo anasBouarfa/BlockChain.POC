@@ -36,7 +36,7 @@ namespace Blockchain.POC.Manager
 
         #region Account methods
 
-        Account CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth);
+        BlockChain CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth);
 
         bool IsUsernameTaken(BlockChain chain, string username);
 

@@ -48,7 +48,7 @@ namespace Blockchain.POC.Manager
             return chain.Accounts.Any(a => a.Username == username);
         }
 
-        public Account CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth)
+        public BlockChain CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth)
         {
             if (!username.IsNullOrWhitespace() &&
                !password.IsNullOrWhitespace())
@@ -58,7 +58,10 @@ namespace Blockchain.POC.Manager
 
                     var account = new Account(username, password, firstname, lastname, dateOfBirth);
 
-                    return account;
+                    chain.Accounts?.Add(account);
+                    chain.PendingTransactions?.Add(new Transaction(null, account.Address, 1));
+
+                    return chain;
                 }
             }
 
