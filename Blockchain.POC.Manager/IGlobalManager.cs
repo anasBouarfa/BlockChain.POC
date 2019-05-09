@@ -48,6 +48,8 @@ namespace Blockchain.POC.Manager
 
         Account GetAccountByAddress(string address);
 
+        Account EncryptAccount(Account account);
+
         #endregion Account methods
 
         #region Transaction methods

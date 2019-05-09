@@ -91,6 +91,20 @@ namespace Blockchain.POC.Manager
             return false;
         }
 
+        public Account EncryptAccount(Account account)
+        {
+            return new Account()
+            {
+                Address = account.Address,
+                CreationDate = account.CreationDate,
+                FirstName = account.FirstName.Encrypt(),
+                LastName = account.LastName.Encrypt(),
+                Username = account.Username.Encrypt(),
+                HashedPassword = account.HashedPassword,
+                Balance = int.Parse(account.Balance).EncodeNumber()
+            };
+        }
+
         #endregion Account methods
 
         #region BlockChain methods

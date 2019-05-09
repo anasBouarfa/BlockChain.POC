@@ -31,6 +31,44 @@ namespace System
             }
         }
 
+        public static string EncodeNumber(this int num)
+        {
+            if (num < 1)
+                return "";
+            int[] nums = new int[9];
+            int pos = 0;
+            var numbers = "2589314706";
+
+            while (!(num == 0))
+            {
+                nums[pos] = num % numbers.Length;
+                num /= numbers.Length;
+                pos += 1;
+            }
+
+            string result = "";
+            foreach (int numIndex in nums)
+                result = numbers[numIndex].ToString() + result;
+
+            return result;
+        }
+
+        public static int DecodeToNumber(this string str)
+        {
+            if (str.Length != 9)
+                return -1;
+            long num = 0;
+            var numbers = "2589314706";
+            foreach (char ch in str)
+            {
+                num *= numbers.Length;
+                num += numbers.IndexOf(ch);
+            }
+            if (num < 1)
+                return 0;
+            return System.Convert.ToInt32(num);
+        }
+
         public static bool IsNumeric(this string text)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -85,54 +123,22 @@ namespace System
         //        }
         //    }
         //}
-
-        public static string Crypt(this string text)
+        public static string Encrypt(this string text)
         {
-            string result = null;
-
-            if (!String.IsNullOrEmpty(text))
-            {
-                byte[] plaintextBytes = Encoding.Unicode.GetBytes(text);
-
-                SymmetricAlgorithm symmetricAlgorithm = DES.Create();
-                
-                symmetricAlgorithm.Key = Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings[AppSettingKeyConstants.EncryptionKey]);
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, symmetricAlgorithm.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cryptoStream.Write(plaintextBytes, 0, plaintextBytes.Length);
-                    }
-
-                    result = Encoding.Unicode.GetString(memoryStream.ToArray());
-                }
-            }
-
-            return result;
+            SymmetricAlgorithm algorithm = DES.Create();
+            ICryptoTransform transform = algorithm.CreateEncryptor(EncrytionConstants.EncryptionKey, EncrytionConstants.InitializationVector);
+            byte[] inputbuffer = Encoding.Unicode.GetBytes(text);
+            byte[] outputBuffer = transform.TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
+            return Convert.ToBase64String(outputBuffer);
         }
 
         public static string Decrypt(this string text)
         {
-            string result = null;
-
-            if (!String.IsNullOrEmpty(text))
-            {
-                byte[] encryptedBytes = Encoding.Unicode.GetBytes(text);
-
-                SymmetricAlgorithm symmetricAlgorithm = DES.Create();
-                symmetricAlgorithm.Key = Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings[AppSettingKeyConstants.EncryptionKey]);
-                using (MemoryStream memoryStream = new MemoryStream(encryptedBytes))
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, symmetricAlgorithm.CreateDecryptor(), CryptoStreamMode.Read))
-                    {
-                        byte[] decryptedBytes = new byte[encryptedBytes.Length];
-                        cryptoStream.Read(decryptedBytes, 0, decryptedBytes.Length);
-                        result = Encoding.Unicode.GetString(decryptedBytes);
-                    }
-                }
-            }
-
-            return result;
+            SymmetricAlgorithm algorithm = DES.Create();
+            ICryptoTransform transform = algorithm.CreateDecryptor(EncrytionConstants.EncryptionKey, EncrytionConstants.InitializationVector);
+            byte[] inputbuffer = Convert.FromBase64String(text);
+            byte[] outputBuffer = transform.TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
+            return Encoding.Unicode.GetString(outputBuffer);
         }
 
         public static string GetHash(this string text)

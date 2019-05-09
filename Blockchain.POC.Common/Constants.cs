@@ -26,11 +26,17 @@ namespace Blockchain.POC.Common
 
     }
 
-    class AppSettingKeyConstants
+    class EncrytionConstants
     {
         /// <summary>
         ///  The secret encryption key used in the application
         /// </summary>
-        public const string EncryptionKey = "EncryptionKey";
+        public static byte[] EncryptionKey = new byte[8] { 106, 48, 123, 23, 49, 86, 3, 114 };
+
+        /// <summary>
+        ///  The initialization vector used in the ecnryption
+        /// </summary>
+        public static byte[] InitializationVector = new byte[8] { 10, 29, 151, 94, 222, 123, 117, 8 };
+
     }
 }

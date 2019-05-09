@@ -14,15 +14,13 @@ namespace Blockchain.POC.Entities
 
         public string LastName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
-
         public string Username { get; set; }
 
         public string HashedPassword { get; set; }
 
         public DateTime CreationDate { get; set; }
 
-        public double Balance { get; set; }
+        public string Balance { get; set; }
 
         public Account()
         {
@@ -33,9 +31,8 @@ namespace Blockchain.POC.Entities
         {
             this.FirstName = firstname;
             this.LastName = lastname;
-            this.DateOfBirth = dateOfBirth;
             this.Username = username;
-            this.Address = (this.Username + this.FirstName + this.LastName + this.DateOfBirth).GetHash();
+            this.Address = (this.Username + this.FirstName + this.LastName).GetHash();
             this.CreationDate = DateTime.Now;
             GetHashedPassword(password);
         }
