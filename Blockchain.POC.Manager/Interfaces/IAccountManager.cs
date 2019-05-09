@@ -9,31 +9,6 @@ namespace Blockchain.POC.Manager
 {
     public partial interface IGlobalManager
     {
-
-        #region Blockchain methods
-
-        void AddBlock(BlockChain chain, Block block);
-
-        bool IsBlockChainValid(BlockChain chain);
-
-        BlockChain LoadLocalBlockChain();
-
-        bool IsLocalBlockchainAvailable();
-
-        bool IsLocalBlockChainUpToDate(BlockChain localChain, BlockChain remoteChain);
-
-        bool SaveBlockChain(BlockChain chain);
-
-        #endregion Blockchain methods
-
-        #region Block methods
-
-        void Mine(Block block);
-
-        Block GetLastBlock(BlockChain chain);
-
-        #endregion Block methods
-
         #region Account methods
 
         BlockChain CreateAccount(BlockChain chain, string username, string password, string firstname, string lastname, DateTime dateOfBirth);
@@ -51,12 +26,5 @@ namespace Blockchain.POC.Manager
         Account EncryptAccount(Account account);
 
         #endregion Account methods
-
-        #region Transaction methods
-
-        List<Transaction> GetTransactionsByAddress(BlockChain chain, string address);
-
-        #endregion Transaction methods
-
     }
 }

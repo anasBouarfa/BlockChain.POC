@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlockChainManager.cs" />
-    <Compile Include="AccountManager.cs" />
+    <Compile Include="Implementations\BlockChainManager.cs" />
+    <Compile Include="Implementations\AccountManager.cs" />
     <Compile Include="GlobalManager.cs" />
-    <Compile Include="IGlobalManager.cs" />
+    <Compile Include="Interfaces\IBlockChainManager.cs" />
+    <Compile Include="Interfaces\IBlockManager.cs" />
+    <Compile Include="Interfaces\IAccountManager.cs" />
+    <Compile Include="Interfaces\ITransactionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BlockManager.cs" />
-    <Compile Include="TransactionManager.cs" />
+    <Compile Include="Implementations\BlockManager.cs" />
+    <Compile Include="Implementations\TransactionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blockchain.POC.Common\Blockchain.POC.Common.csproj">
