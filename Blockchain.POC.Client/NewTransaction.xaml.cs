@@ -46,6 +46,11 @@ namespace Blockchain.POC.Client
 
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = e.Text.IsNumeric();
+        }
+
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Home homePage = new Home
