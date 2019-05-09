@@ -29,7 +29,7 @@ namespace System
             }
         }
 
-        public static bool IsNumbers(this string text)
+        public static bool IsNumeric(this string text)
         {
             Regex regex = new Regex("[^0-9]+");
             return regex.IsMatch(text);

@@ -60,7 +60,7 @@ namespace Blockchain.POC.Client
 
         protected void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = e.Text.IsNumbers();
+            e.Handled = e.Text.IsNumeric();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)

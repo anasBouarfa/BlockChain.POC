@@ -41,7 +41,7 @@ namespace Blockchain.POC.Client
 
         protected void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = e.Text.IsNumbers();
+            e.Handled = e.Text.IsNumeric();
         }
     }
 }

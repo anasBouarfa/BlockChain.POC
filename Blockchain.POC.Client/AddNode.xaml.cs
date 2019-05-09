@@ -1,9 +1,7 @@
 ﻿using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WebSocketSharp;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using Blockchain.POC.Common;
@@ -13,20 +11,16 @@ namespace Blockchain.POC.Client
     /// <summary>
     /// Interaction logic for AddNode.xaml
     /// </summary>
-    public partial class AddNode : Window
+    public partial class AddNode : BaseWindow
     {
-        private IGlobalManager _globalManager;
-
         public AddNode()
         {
-            _globalManager = new GlobalManager((App.Current.Properties["Port"] as int?).Value);
             InitializeComponent();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = e.Text.IsNumeric();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
