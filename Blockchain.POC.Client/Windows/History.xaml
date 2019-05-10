@@ -6,26 +6,26 @@
         xmlns:local="clr-namespace:Blockchain.POC.Client"
         mc:Ignorable="d"
         Title="MyWallet" Height="400" Width="400">
-    <Border Padding="10" >
+    <Border Padding="10">
         <StackPanel Background="LightGray">
             <Grid>
-                <Grid.ColumnDefinitions >
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55"/>
+                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock Text="Your transactions" FontSize="20" Margin="10 20 0 20" FontWeight="Bold"/>
+            <TextBlock Text="Your transactions" FontSize="20" Margin="10 20 0 20" FontWeight="Bold" />
             <DataGrid Name="TransactionsDG" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Width="350" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Binding="{Binding FromAddress}" Width="*" />
-                    <DataGridTextColumn Header="To" Binding="{Binding ToAddress}" Width="*"/>
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding CreationDate}" Width="*"/>
+                    <DataGridTextColumn Header="To" Binding="{Binding ToAddress}" Width="*" />
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*" />
+                    <DataGridTextColumn Header="Date" Binding="{Binding CreationDate}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Name="Return" Content="Return" Margin="10 15 10 0" Click ="Return_Click"/>
+            <Button Name="Return" Content="Return" Margin="10 15 10 0" Click ="Return_Click" />
         </StackPanel>
     </Border>
 </local:BaseWindow>

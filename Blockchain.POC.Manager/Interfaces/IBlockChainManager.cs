@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Blockchain.POC.Entities;
-using System.Threading.Tasks;
+﻿using Blockchain.POC.Entities;
 
 namespace Blockchain.POC.Manager
 {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blockchain.POC.Entities
 {
@@ -24,7 +20,6 @@ namespace Blockchain.POC.Entities
 
         public Account()
         {
-
         }
 
         public Account(string username, string password, string firstname, string lastname, DateTime dateOfBirth)
@@ -41,6 +36,5 @@ namespace Blockchain.POC.Entities
         {
             this.HashedPassword = password.GetHash();
         }
-
     }
 }

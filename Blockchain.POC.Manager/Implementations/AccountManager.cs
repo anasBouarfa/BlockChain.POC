@@ -1,6 +1,5 @@
 ﻿using Blockchain.POC.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Blockchain.POC.Manager
@@ -26,7 +25,6 @@ namespace Blockchain.POC.Manager
             {
                 if (!chain.Accounts.Select(s => s.Username).Any(a => a == username.Encrypt()))
                 {
-
                     var account = new Account(username, password, firstname, lastname, dateOfBirth);
 
                     account = EncryptAccount(account);

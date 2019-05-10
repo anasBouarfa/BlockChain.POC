@@ -1,14 +1,8 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Blockchain.POC.Common;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
-using System.IO;
-using System.Configuration;
-using Blockchain.POC.Common;
 
 namespace System
 {
@@ -75,9 +69,9 @@ namespace System
             return regex.IsMatch(text);
         }
 
-        public static string GetJsonHash(this object text)
+        public static string JsonSerialize(this object obj)
         {
-            return JsonConvert.SerializeObject(text).GetHash();
+            return JsonConvert.SerializeObject(obj);
         }
 
         public static string Encrypt(this string text)

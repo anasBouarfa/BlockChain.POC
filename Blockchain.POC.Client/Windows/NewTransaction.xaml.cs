@@ -1,20 +1,10 @@
 ﻿using Blockchain.POC.Common;
 using Blockchain.POC.Entities;
-using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
-using WebSocketSharp;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using WebSocketSharp;
 
 namespace Blockchain.POC.Client
 {
@@ -30,7 +20,7 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if(_globalManager.IsAccountAddressValid(_chain, Address.Text) && Address.Text != App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string)
+            if (_globalManager.IsAccountAddressValid(_chain, Address.Text) && Address.Text != App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string)
             {
                 if (!_chain.PendingTransactions.IsNullOrEmpty())
                     _chain.PendingTransactions.Add(new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, Address.Text, double.Parse(Amount.Text)));
@@ -43,7 +33,6 @@ namespace Blockchain.POC.Client
                 };
                 client.BroadcastChain(_chain);
             }
-
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

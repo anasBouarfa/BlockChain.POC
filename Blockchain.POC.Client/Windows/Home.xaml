@@ -6,23 +6,23 @@
         xmlns:local="clr-namespace:Blockchain.POC.Client"
         mc:Ignorable="d"
         Title="MyWallet" Height="400" Width="400">
-    <Border Padding="10" >
+    <Border Padding="10">
         <StackPanel Background="LightGray">
             <!--<Grid>
-                <Grid.ColumnDefinitions >
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="55" />
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55"/>
+                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>-->
-            <TextBlock x:Name="FullName" Text="{Binding ElementName=FullName}" FontSize="20" Margin="10 20 0 0" FontWeight="Bold"/>
-            <Button Content="My Balance" Margin="10 15 10 0" Background="SkyBlue" FontWeight="DemiBold" Click="MyBalance_Click"/>
-            <Button Content="My transactions"  Margin="10 15 10 0" Background="YellowGreen" FontWeight="DemiBold" Click="MyTransactions_Click"/>
-            <Button Content="New transaction"  Margin="10 15 10 0" Background="LightSeaGreen" FontWeight="DemiBold" Click="NewTransaction_Click"/>
-            <Button Content="Connect to another node"  Margin="10 15 10 0" FontWeight="DemiBold" Background="CadetBlue" Click="ConnectToNode_Click"/>
-            <Button Content="Mine"  Margin="10 15 10 0" FontWeight="DemiBold" Background="Cornsilk" Click="Mine_Click"/>
-            <Button Content="Log Out"  Margin="10 15 10 0" FontWeight="DemiBold" Click="LogOut_Click"/>
+            <TextBlock x:Name="FullName" Text="{Binding ElementName=FullName}" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
+            <Button Content="My Balance" Margin="10 15 10 0" Background="SkyBlue" FontWeight="DemiBold" Click="MyBalance_Click" />
+            <Button Content="My transactions"  Margin="10 15 10 0" Background="YellowGreen" FontWeight="DemiBold" Click="MyTransactions_Click" />
+            <Button Content="New transaction"  Margin="10 15 10 0" Background="LightSeaGreen" FontWeight="DemiBold" Click="NewTransaction_Click" />
+            <Button Content="Connect to another node"  Margin="10 15 10 0" FontWeight="DemiBold" Background="CadetBlue" Click="ConnectToNode_Click" />
+            <Button Content="Mine"  Margin="10 15 10 0" FontWeight="DemiBold" Background="Cornsilk" Click="Mine_Click" />
+            <Button Content="Log Out"  Margin="10 15 10 0" FontWeight="DemiBold" Click="LogOut_Click" />
         </StackPanel>
     </Border>
 </local:BaseWindow>

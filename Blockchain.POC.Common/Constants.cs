@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Blockchain.POC.Common
+﻿namespace Blockchain.POC.Common
 {
     public static class ApplicationPropertiesConstants
     {
@@ -22,8 +16,6 @@ namespace Blockchain.POC.Common
         /// The current user address
         /// </summary>
         public const string UserAddress = "User";
-
-
     }
 
     public static class EncrytionConstants
@@ -37,6 +29,5 @@ namespace Blockchain.POC.Common
         ///  The initialization vector used in the ecnryption
         /// </summary>
         public static readonly byte[] InitializationVector = new byte[8] { 10, 29, 151, 94, 222, 123, 117, 8 };
-
     }
 }

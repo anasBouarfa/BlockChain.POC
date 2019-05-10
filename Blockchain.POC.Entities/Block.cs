@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blockchain.POC.Entities
 {
@@ -14,5 +11,12 @@ namespace Blockchain.POC.Entities
         public string Hash { get; set; }
         public List<Transaction> Transactions { get; set; }
         public int Nonce { get; set; } = 0;
+
+        public Block(DateTime timeStamp, string previousHash, List<Transaction> transactions)
+        {
+            TimeStamp = timeStamp;
+            PreviousHash = previousHash;
+            Transactions = transactions;
+        }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Blockchain.POC.Common;
+using Blockchain.POC.Entities;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-using Blockchain.POC.Entities;
-using Blockchain.POC.Manager;
-using Blockchain.POC.Common;
 using WebSocketSharp;
 
 namespace Blockchain.POC.Client
@@ -18,19 +17,19 @@ namespace Blockchain.POC.Client
         {
             InitializeComponent();
         }
-        
+
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if(!Username.Text.IsNullOrWhitespace() &&
+            if (!Username.Text.IsNullOrWhitespace() &&
                !Password.Password.IsNullOrWhitespace())
             {
                 BlockChain chain = _globalManager.LoadLocalBlockChain();
 
                 P2PClient.Client client = new P2PClient.Client(_globalManager);
 
-                if(RemotePort.Text.IsNullOrWhitespace())
+                if (RemotePort.Text.IsNullOrWhitespace())
                 {
-                    //handle it 
+                    //handle it
                 }
 
                 var dictionnary = new Dictionary<string, WebSocket>();
@@ -45,7 +44,7 @@ namespace Blockchain.POC.Client
 
                 string userHash = _globalManager.IsAccountLoginValid(chain, Username.Text, Password.Password);
 
-                if(!userHash.IsNullOrWhitespace())
+                if (!userHash.IsNullOrWhitespace())
                 {
                     App.Current.Properties[ApplicationPropertiesConstants.UserAddress] = userHash;
 
@@ -53,7 +52,6 @@ namespace Blockchain.POC.Client
                 }
                 else //not authorized
                 {
-
                 }
             }
         }
@@ -70,7 +68,7 @@ namespace Blockchain.POC.Client
 
         private void ChangeWindow(bool isAuthorized, string address = null)
         {
-            if(!isAuthorized)
+            if (!isAuthorized)
             {
                 SignIn signInPage = new SignIn
                 {

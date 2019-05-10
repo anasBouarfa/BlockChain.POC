@@ -1,6 +1,5 @@
-﻿using System;
-using Blockchain.POC.Common;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace testCommon
 {

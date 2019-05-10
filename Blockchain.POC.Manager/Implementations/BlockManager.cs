@@ -16,12 +16,31 @@ namespace Blockchain.POC.Manager
 
         public void Mine(Block block)
         {
-            throw new NotImplementedException();
+            var leadingZeros = new string('0', BlockChain.Difficulty);
+            while (block.Hash == null || block.Hash.Substring(0, BlockChain.Difficulty) != leadingZeros)
+            {
+                block.Nonce++;
+                CalculateBlockHash(block);
+            }
         }
 
-        public void AddBlock(BlockChain chain, Block block)
+        public void AddBlock(BlockChain chain, List<Transaction> transactions)
         {
-            throw new NotImplementedException();
+            Block latestBlock = GetLastBlock(chain);
+
+            Block block = new Block(DateTime.Now, latestBlock.Hash, transactions)
+            {
+                Index = ++latestBlock.Index
+            };
+
+            CalculateBlockHash(block);
+
+            Mine(block);
+        }
+
+        public void CalculateBlockHash(Block block)
+        {
+            block.Hash = $"{block.TimeStamp}-{block.PreviousHash}-{block.Transactions.JsonSerialize()}-{block.Nonce}".GetHash();
         }
 
         #endregion Block methods

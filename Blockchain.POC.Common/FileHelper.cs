@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace System.IO
 {
@@ -19,7 +15,7 @@ namespace System.IO
     {
         public static T LoadObjectFromJson(string path)
         {
-            if(FileHelper.IsFileExistant(path))
+            if (FileHelper.IsFileExistant(path))
             {
                 using (StreamReader r = new StreamReader(path))
                 {
@@ -60,11 +56,10 @@ namespace System.IO
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
-
         }
 
         public List<T> LoadObjectsFromJson(string address)

@@ -1,7 +1,7 @@
-﻿using Blockchain.POC.P2PServer;
+﻿using Blockchain.POC.Common;
+using Blockchain.POC.P2PServer;
 using System;
 using System.Windows;
-using Blockchain.POC.Common;
 using System.Windows.Input;
 
 namespace Blockchain.POC.Client
@@ -18,7 +18,7 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if(!Port.Text.IsNullOrWhitespace())
+            if (!Port.Text.IsNullOrWhitespace())
             {
                 Server server = new Server();
                 server.Start(int.Parse(Port.Text));

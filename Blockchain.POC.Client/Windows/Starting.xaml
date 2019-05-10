@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:Blockchain.POC.Client"
         mc:Ignorable="d"
         Title="MyWallet" Height="400" Width="400">
-    <Border Padding="10" >
+    <Border Padding="10">
         <StackPanel Background="LightGray">
             <Grid>
-                <Grid.ColumnDefinitions >
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55"/>
+                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock Text="Choose the port you want your node to run on : " FontSize="15" Margin="10 20 0 0" FontWeight="Bold"/>
-            <TextBox Name="Port" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Margin="10 5 10 0"/>
+            <TextBlock Text="Choose the port you want your node to run on : " FontSize="15" Margin="10 20 0 0" FontWeight="Bold" />
+            <TextBox Name="Port" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Margin="10 5 10 0" />
 
-            <Button Name="Submit" Content="Connect" Margin="10 15 10 0" Click ="Submit_Click"/>
+            <Button Name="Submit" Content="Connect" Margin="10 15 10 0" Click ="Submit_Click" />
         </StackPanel>
     </Border>
 </Window>

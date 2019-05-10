@@ -8,32 +8,32 @@
         Title="MyWallet" Height="400" Width="400">
     <StackPanel Background="LightGray">
         <Grid>
-            <Grid.ColumnDefinitions >
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55"/>
-            <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
-        </Grid>
-        <TextBlock Text="New Transaction :" FontSize="20" Margin="10 20 0 0" FontWeight="Bold"/>
-        <Grid Margin="10 5 10 0">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="100"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Address " FontWeight="Bold" FontSize="15" Grid.Column="0"/>
-            <TextBox Name="Address" Grid.Column="1"/>
+            <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
+            <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
+        </Grid>
+        <TextBlock Text="New Transaction :" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
+        <Grid Margin="10 5 10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Address " FontWeight="Bold" FontSize="15" Grid.Column="0" />
+            <TextBox Name="Address" Grid.Column="1" />
         </Grid>
         <Grid Margin="10 5 10 0">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Amount " FontWeight="Bold" FontSize="15" Grid.Column="0"/>
-            <TextBox Name="Amount" Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text="Amount " FontWeight="Bold" FontSize="15" Grid.Column="0" />
+            <TextBox Name="Amount" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" />
         </Grid>
 
-        <Button Name="Submit" Content="Submit" Margin="10 15 10 0" Click ="Submit_Click" Background="SkyBlue" FontWeight="DemiBold"/>
-        <Button Name="Cancel" Content="Cancel" Margin="10 15 10 0" Click ="Cancel_Click"/>
+        <Button Name="Submit" Content="Submit" Margin="10 15 10 0" Click ="Submit_Click" Background="SkyBlue" FontWeight="DemiBold" />
+        <Button Name="Cancel" Content="Cancel" Margin="10 15 10 0" Click ="Cancel_Click" />
     </StackPanel>
 </local:BaseWindow>

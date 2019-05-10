@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
-using System.Linq;
+using Newtonsoft.Json;
+using System;
 using WebSocketSharp;
 using WebSocketSharp.Server;
-using System.Text;
-using System.Threading.Tasks;
-using Blockchain.POC.Entities;
-using Newtonsoft.Json;
 
 namespace Blockchain.POC.P2PServer
 {
     public class Server : WebSocketBehavior
     {
-        WebSocketServer wss = null;
+        private WebSocketServer wss = null;
         private IGlobalManager _globalManager;
         private int port;
 

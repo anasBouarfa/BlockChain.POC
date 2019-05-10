@@ -1,9 +1,8 @@
 ﻿using Blockchain.POC.Entities;
+using Blockchain.POC.Manager;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Blockchain.POC.Manager;
 using WebSocketSharp;
 
 namespace Blockchain.POC.P2PClient
@@ -17,6 +16,7 @@ namespace Blockchain.POC.P2PClient
         {
             _globalManager = globalManager;
         }
+
         public WebSocket Connect(string url, BlockChain chain)
         {
             WebSocket ws = new WebSocket(url);
@@ -76,7 +76,6 @@ namespace Blockchain.POC.P2PClient
                 }
                 catch
                 {
-
                 }
             }
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Blockchain.POC.Entities
 {
@@ -13,7 +9,7 @@ namespace Blockchain.POC.Entities
 
         public List<Account> Accounts { get; set; }
 
-        public int Difficulty { set; get; } = 2;
+        public const int Difficulty = 2;
 
         public int Reward = 1; //1 cryptocurrency
     }
