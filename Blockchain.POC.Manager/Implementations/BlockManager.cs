@@ -39,8 +39,6 @@ namespace Blockchain.POC.Manager
                 Index = ++latestBlock.Index
             };
 
-            CalculateBlockHash(block);
-
             block = Mine(block);
 
             chain.Blocks.Add(block);
