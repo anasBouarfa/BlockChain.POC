@@ -29,7 +29,9 @@ namespace Blockchain.POC.Manager
 
                     var account = new Account(username, password, firstname, lastname, dateOfBirth);
 
+                    account = EncryptAccount(account);
                     chain.Accounts?.Add(account);
+
                     chain.PendingTransactions?.Add(new Transaction(null, account.Address, 1));
 
                     return chain;
