@@ -21,6 +21,7 @@ namespace Blockchain.POC.Client
     {
         public Mine() : base()
         {
+            _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
         }
 
@@ -39,7 +40,7 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
+            _chain = _globalManager.AddBlock(_chain);
         }
     }
 }
