@@ -6,7 +6,7 @@ namespace Blockchain.POC.Manager
     {
         #region Blockchain methods
 
-        void AddBlock(BlockChain chain, Block block);
+        BlockChain AddBlock(BlockChain chain);
 
         bool IsBlockChainValid(BlockChain chain);
 

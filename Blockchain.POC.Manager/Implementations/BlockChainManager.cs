@@ -1,5 +1,6 @@
 ﻿using Blockchain.POC.Entities;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -31,6 +32,25 @@ namespace Blockchain.POC.Manager
             }
 
             return false;
+        }
+
+
+        public BlockChain AddBlock(BlockChain chain)
+        {
+            Block latestBlock = GetLastBlock(chain);
+
+            Block block = new Block(DateTime.Now, latestBlock.Hash, chain.PendingTransactions)
+            {
+                Index = ++latestBlock.Index
+            };
+
+            block = Mine(block);
+
+            chain.Blocks.Add(block);
+
+            chain.PendingTransactions = new List<Transaction>();
+
+            return chain;
         }
 
         public bool IsLocalBlockchainAvailable()

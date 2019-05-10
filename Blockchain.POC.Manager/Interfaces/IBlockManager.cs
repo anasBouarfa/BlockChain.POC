@@ -6,11 +6,11 @@ namespace Blockchain.POC.Manager
     {
         #region Block methods
 
-        void Mine(Block block);
+        Block Mine(Block block);
 
         Block GetLastBlock(BlockChain chain);
 
-        void CalculateBlockHash(Block block);
+        string CalculateBlockHash(Block block);
 
         #endregion Block methods
     }
