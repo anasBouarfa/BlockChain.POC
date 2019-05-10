@@ -19,14 +19,22 @@ namespace Blockchain.POC.Client
     /// </summary>
     public partial class Mine : BaseWindow
     {
-        public Mine()
+        public Mine() : base()
         {
             InitializeComponent();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            new Home()
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
 
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
