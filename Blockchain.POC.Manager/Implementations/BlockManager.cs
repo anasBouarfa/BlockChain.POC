@@ -14,33 +14,45 @@ namespace Blockchain.POC.Manager
             return chain.Blocks.OrderByDescending(o => o.Index).FirstOrDefault();
         }
 
-        public void Mine(Block block)
+        public Block Mine(Block block)
         {
             var leadingZeros = new string('0', BlockChain.Difficulty);
+            string hash = new string(' ', 128);
+
             while (block.Hash == null || block.Hash.Substring(0, BlockChain.Difficulty) != leadingZeros)
             {
                 block.Nonce++;
-                CalculateBlockHash(block);
+                hash = CalculateBlockHash(block);
             }
+
+            block.Hash = hash;
+
+            return block;
         }
 
-        public void AddBlock(BlockChain chain, List<Transaction> transactions)
+        public BlockChain AddBlock(BlockChain chain)
         {
             Block latestBlock = GetLastBlock(chain);
 
-            Block block = new Block(DateTime.Now, latestBlock.Hash, transactions)
+            Block block = new Block(DateTime.Now, latestBlock.Hash, chain.PendingTransactions)
             {
                 Index = ++latestBlock.Index
             };
 
             CalculateBlockHash(block);
 
-            Mine(block);
+            block = Mine(block);
+
+            chain.Blocks.Add(block);
+
+            chain.PendingTransactions = new List<Transaction>();
+
+            return chain;
         }
 
-        public void CalculateBlockHash(Block block)
+        public string CalculateBlockHash(Block block)
         {
-            block.Hash = $"{block.TimeStamp}-{block.PreviousHash}-{block.Transactions.JsonSerialize()}-{block.Nonce}".GetHash();
+            return $"{block.TimeStamp}-{block.PreviousHash}-{block.Transactions.JsonSerialize()}-{block.Nonce}".GetHash();
         }
 
         #endregion Block methods
