@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{5FC17B9A-1227-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testCommon", "testCommon\testCommon.csproj", "{1FF17047-F5F0-4C27-B522-32F50800AB3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.ConfigurationConsole", "Blockchain.POC.ConfigurationConsole\Blockchain.POC.ConfigurationConsole.csproj", "{309F60C8-4B2D-46EA-8C0B-33646393B107}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{1FF17047-F5F0-4C27-B522-32F50800AB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF17047-F5F0-4C27-B522-32F50800AB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF17047-F5F0-4C27-B522-32F50800AB3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309F60C8-4B2D-46EA-8C0B-33646393B107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309F60C8-4B2D-46EA-8C0B-33646393B107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309F60C8-4B2D-46EA-8C0B-33646393B107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309F60C8-4B2D-46EA-8C0B-33646393B107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{21B1D30F-C9B2-412C-B1B8-815489170CF7} = {5FC17B9A-1227-4ACE-AA48-D18DC7C13DA0}
 		{E4191571-5E46-4D23-BEA2-08953EFA74D1} = {5420A999-C6EA-4508-84EB-C358BAF18088}
 		{7097AF5A-B258-4CEE-BCDB-AE3CAF988D15} = {5420A999-C6EA-4508-84EB-C358BAF18088}
+		{309F60C8-4B2D-46EA-8C0B-33646393B107} = {5FC17B9A-1227-4ACE-AA48-D18DC7C13DA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {672FD87D-8429-4B00-9255-8A79192DC613}
