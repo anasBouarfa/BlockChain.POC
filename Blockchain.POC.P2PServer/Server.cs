@@ -31,10 +31,9 @@ namespace Blockchain.POC.P2PServer
 
         protected override void OnMessage(MessageEventArgs e)
         {
-            if (e.Data == "Hi Server")
+            if (e.Data == "Show me your blockchain !")
             {
-                Console.WriteLine(e.Data);
-                Send("Hi Client");
+                Send(_globalManager.LoadBlockChainAsString());
             }
             else
             {

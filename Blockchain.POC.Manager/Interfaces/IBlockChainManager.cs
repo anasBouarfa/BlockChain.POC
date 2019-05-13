@@ -12,6 +12,8 @@ namespace Blockchain.POC.Manager
 
         BlockChain LoadLocalBlockChain();
 
+        string LoadBlockChainAsString();
+
         bool IsLocalBlockchainAvailable();
 
         bool IsLocalBlockChainUpToDate(BlockChain localChain, BlockChain remoteChain);

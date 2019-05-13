@@ -9,6 +9,28 @@ namespace System.IO
         {
             return File.Exists(fullPath);
         }
+
+        public static string ReadFromFile(string path)
+        {
+            if (FileHelper.IsFileExistant(path))
+            {
+                using (StreamReader r = new StreamReader(path))
+                {
+                    try
+                    {
+                        return r.ReadToEnd();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 
     public class FileHelper<T>

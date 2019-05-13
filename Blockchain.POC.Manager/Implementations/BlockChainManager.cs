@@ -34,7 +34,6 @@ namespace Blockchain.POC.Manager
             return false;
         }
 
-
         public BlockChain AddBlock(BlockChain chain)
         {
             Block latestBlock = GetLastBlock(chain);
@@ -68,7 +67,7 @@ namespace Blockchain.POC.Manager
 
         public bool IsLocalBlockchainAvailable()
         {
-            return FileHelper.IsFileExistant(@"C:/Blockchains/" + usedPort);
+            return FileHelper.IsFileExistant(@"C:/Blockchains/" + usedPort + ".json");
         }
 
         public bool IsLocalBlockChainUpToDate(BlockChain localChain, BlockChain remoteChain)
@@ -79,6 +78,11 @@ namespace Blockchain.POC.Manager
         public BlockChain LoadLocalBlockChain()
         {
             return FileHelper<BlockChain>.LoadObjectFromJson(@"C:/Blockchains/" + usedPort + ".json");
+        }
+
+        public string LoadBlockChainAsString()
+        {
+            return FileHelper.ReadFromFile(@"C:/Blockchains/" + usedPort + ".json");
         }
 
         public bool SaveBlockChain(BlockChain chain)
