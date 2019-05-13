@@ -13,6 +13,7 @@ namespace Blockchain.POC.Client
     {
         public SignIn() : base()
         {
+            _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
         }
 

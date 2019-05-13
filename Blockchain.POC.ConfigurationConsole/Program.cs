@@ -2,6 +2,7 @@
 using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Blockchain.POC.ConfigurationConsole
 {
@@ -19,20 +20,25 @@ namespace Blockchain.POC.ConfigurationConsole
 
             Transaction initialTransaction = new Transaction(null, firstAccount.Address, BlockChain.Reward);
 
-            var blockchain = new BlockChain
+            var chain = new BlockChain
             {
                 Accounts = new List<Account>
                 {
                     _globalManager.EncryptAccount(firstAccount)
                 },
-                PendingTransactions = new List<Transaction>(),
-                Blocks = new List<Block>
-                {
-                    new Block(DateTime.Now, null, new List<Transaction>() {initialTransaction})
-                },
+                PendingTransactions = new List<Transaction>()
             };
 
-            _globalManager.SaveBlockChain(blockchain);
+            var block = new Block(DateTime.Now, null, new List<Transaction>() { initialTransaction });
+
+            block.Hash = _globalManager.CalculateBlockHash(block);
+
+            chain.Blocks = new List<Block>
+            {
+                block
+            };
+
+            _globalManager.SaveBlockChain(chain);
 
             Console.WriteLine("Genesis block was succesfully created");
             Console.ReadLine();

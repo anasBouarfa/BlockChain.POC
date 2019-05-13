@@ -83,7 +83,7 @@ namespace System.IO
 
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
