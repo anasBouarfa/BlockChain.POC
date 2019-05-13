@@ -41,6 +41,8 @@ namespace Blockchain.POC.Manager
 
         public double GetAccountBalance(BlockChain chain, string address)
         {
+            address = address.Encrypt();
+
             return chain.Blocks.SelectMany(s => s.Transactions)
                     .Where(t => t.FromAddress == address || t.ToAddress == address)
                     .Select(s => s.ToAddress == address ? s.Amount : -s.Amount)

@@ -20,7 +20,15 @@ namespace Blockchain.POC.Client
 
         private void MyBalance_Click(object sender, RoutedEventArgs e)
         {
-            double balance = _globalManager.GetAccountBalance(_chain, address);
+            new MyBalance
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
 
         private void MyTransactions_Click(object sender, RoutedEventArgs e)

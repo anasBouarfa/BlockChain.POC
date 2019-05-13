@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Blockchain.POC.Common;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Blockchain.POC.Client
 {
@@ -19,8 +8,11 @@ namespace Blockchain.POC.Client
     /// </summary>
     public partial class MyBalance : BaseWindow
     {
+        public string balance { get; set; }
+
         public MyBalance()
         {
+            balance = _globalManager.GetAccountBalance(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string).ToString();
             InitializeComponent();
         }
 

@@ -31,6 +31,7 @@ namespace Blockchain.POC.Client
                 {
                     urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
                 };
+
                 client.BroadcastChain(_chain);
             }
         }

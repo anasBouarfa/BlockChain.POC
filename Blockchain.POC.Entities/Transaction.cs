@@ -11,8 +11,8 @@ namespace Blockchain.POC.Entities
 
         public Transaction(string fromAddress, string toAddress, double amount)
         {
-            FromAddress = fromAddress;
-            ToAddress = toAddress;
+            FromAddress = fromAddress?.Encrypt();
+            ToAddress = toAddress?.Encrypt();
             Amount = amount;
             CreationDate = DateTime.Now;
         }
