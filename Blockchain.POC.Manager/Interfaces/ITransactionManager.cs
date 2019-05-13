@@ -9,6 +9,8 @@ namespace Blockchain.POC.Manager
 
         List<Transaction> GetTransactionsByAddress(BlockChain chain, string address);
 
+        List<Transaction> GetPendingTransactionsByAddress(BlockChain chain, string address);
+
         #endregion Transaction methods
     }
 }

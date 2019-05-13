@@ -24,6 +24,15 @@
                 <TextBlock Text="Your balance :" FontWeight="Bold" FontSize="15" Grid.Column="0" />
                 <TextBlock Text="{Binding balance}" Grid.Column="1" />
             </Grid>
+            <TextBlock Text="Your pending transactions" FontSize="20" Margin="10 20 0 20" FontWeight="Bold" />
+            <DataGrid Name="PendingTransactionsDG" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Width="350" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="From" Binding="{Binding FromAddress}" Width="*" />
+                    <DataGridTextColumn Header="To" Binding="{Binding ToAddress}" Width="*" />
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*" />
+                    <DataGridTextColumn Header="Date" Binding="{Binding CreationDate}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
             <Button Name="Return" Content="Return" Margin="10 15 10 0" Click ="Return_Click" />
         </StackPanel>
     </Border>

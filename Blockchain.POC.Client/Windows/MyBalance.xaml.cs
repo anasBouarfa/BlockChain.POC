@@ -13,7 +13,7 @@ namespace Blockchain.POC.Client
         public MyBalance()
         {
             balance = _globalManager.GetAccountBalance(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string).ToString();
-
+            PendingTransactionsDG.ItemsSource = _globalManager.GetPendingTransactionsByAddress(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
             InitializeComponent();
         }
 
@@ -25,7 +25,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }

@@ -1,4 +1,5 @@
 ﻿using Blockchain.POC.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,20 @@ namespace Blockchain.POC.Manager
             var account = chain.Accounts.FirstOrDefault(a => a.Address == address);
 
             return account.FirstName + " " + account.LastName;
+        }
+
+        public List<Transaction> GetPendingTransactionsByAddress(BlockChain chain, string address)
+        {
+            if(!chain.PendingTransactions.IsNullOrEmpty() && !address.IsNullOrWhitespace())
+            {
+                address = address.Encrypt();
+
+                return chain.PendingTransactions.Where(t => t.FromAddress == address || t.ToAddress == address).ToList();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
