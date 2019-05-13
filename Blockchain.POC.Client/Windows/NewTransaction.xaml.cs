@@ -20,12 +20,13 @@ namespace Blockchain.POC.Client
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (_globalManager.IsAccountAddressValid(_chain, Address.Text) && Address.Text != App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string)
+            if (_globalManager.IsAccountUsernameValid(_chain, Address.Text) && Address.Text != App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string)
             {
+                var account = _globalManager.GetAccountByUsername(_chain, Address.Text);
                 if (!_chain.PendingTransactions.IsNullOrEmpty())
-                    _chain.PendingTransactions.Add(new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, Address.Text, int.Parse(Amount.Text)));
+                    _chain.PendingTransactions.Add(new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, account.Address, int.Parse(Amount.Text)));
                 else
-                    _chain.PendingTransactions = new List<Transaction> { new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, Address.Text, int.Parse(Amount.Text)) };
+                    _chain.PendingTransactions = new List<Transaction> { new Transaction(App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string, account.Address, int.Parse(Amount.Text)) };
 
                 P2PClient.Client client = new P2PClient.Client(_globalManager)
                 {

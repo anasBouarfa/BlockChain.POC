@@ -33,6 +33,9 @@ namespace Blockchain.POC.ConfigurationConsole
             };
 
             _globalManager.SaveBlockChain(blockchain);
+
+            Console.WriteLine("Genesis block was succesfully created");
+            Console.ReadLine();
         }
     }
 }

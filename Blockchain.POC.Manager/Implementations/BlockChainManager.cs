@@ -68,7 +68,7 @@ namespace Blockchain.POC.Manager
 
         public bool IsLocalBlockchainAvailable()
         {
-            return FileHelper.IsFileExistant(@"Blockchains/" + usedPort);
+            return FileHelper.IsFileExistant(@"C:/Blockchains/" + usedPort);
         }
 
         public bool IsLocalBlockChainUpToDate(BlockChain localChain, BlockChain remoteChain)
@@ -78,12 +78,12 @@ namespace Blockchain.POC.Manager
 
         public BlockChain LoadLocalBlockChain()
         {
-            return FileHelper<BlockChain>.LoadObjectFromJson(@"Blockchains/" + usedPort + ".json");
+            return FileHelper<BlockChain>.LoadObjectFromJson(@"C:/Blockchains/" + usedPort + ".json");
         }
 
         public bool SaveBlockChain(BlockChain chain)
         {
-            return FileHelper<BlockChain>.CreateFileFromObject(chain, @"Blockchains/", usedPort + ".json");
+            return FileHelper<BlockChain>.CreateFileFromObject(chain, @"C:/Blockchains/", usedPort + ".json");
         }
     }
 }

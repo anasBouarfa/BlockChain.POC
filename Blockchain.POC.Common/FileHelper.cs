@@ -42,6 +42,11 @@ namespace System.IO
             {
                 string fullPath = Path.Combine(path, fileName);
 
+                if(!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
                 if (File.Exists(fullPath))
                 {
                     File.Delete(fullPath);

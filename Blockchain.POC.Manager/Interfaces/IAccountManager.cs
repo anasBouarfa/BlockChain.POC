@@ -15,9 +15,9 @@ namespace Blockchain.POC.Manager
 
         int GetAccountBalance(BlockChain chain, string address);
 
-        bool IsAccountAddressValid(BlockChain chain, string address);
+        bool IsAccountUsernameValid(BlockChain chain, string username);
 
-        Account GetAccountByAddress(BlockChain chain, string address);
+        Account GetAccountByUsername(BlockChain chain, string username);
 
         Account EncryptAccount(Account account);
 

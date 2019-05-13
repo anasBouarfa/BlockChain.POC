@@ -44,16 +44,16 @@ namespace Blockchain.POC.Manager
             return chain.Accounts.FirstOrDefault(a => a.Address == address).Balance.DecodeToNumber();
         }
 
-        public Account GetAccountByAddress(BlockChain chain, string address)
+        public Account GetAccountByUsername(BlockChain chain, string username)
         {
-            return chain.Accounts.FirstOrDefault(a => a.Address == address);
+            return chain.Accounts.FirstOrDefault(a => a.Username == username.Encrypt());
         }
 
-        public bool IsAccountAddressValid(BlockChain chain, string address)
+        public bool IsAccountUsernameValid(BlockChain chain, string username)
         {
             if (chain != null)
             {
-                return chain.Accounts.Any(a => a.Address == address);
+                return chain.Accounts.Any(a => a.Username == username.Encrypt());
             }
 
             return false;
