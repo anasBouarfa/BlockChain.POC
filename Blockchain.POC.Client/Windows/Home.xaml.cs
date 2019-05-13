@@ -1,4 +1,5 @@
-﻿using Blockchain.POC.Entities;
+﻿using Blockchain.POC.Common;
+using Blockchain.POC.Entities;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -11,15 +12,9 @@ namespace Blockchain.POC.Client
     {
         private string address;
 
-        public Home(string address)
-        {
-            this.address = address;
-            FullName.Text = address;
-            InitializeComponent();
-        }
-
         public Home()
         {
+            address = App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string;
             InitializeComponent();
         }
 
@@ -30,7 +25,15 @@ namespace Blockchain.POC.Client
 
         private void MyTransactions_Click(object sender, RoutedEventArgs e)
         {
-            List<Transaction> transactions = _globalManager.GetTransactionsByAddress(_chain, address);
+            new History
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
 
         private void NewTransaction_Click(object sender, RoutedEventArgs e)

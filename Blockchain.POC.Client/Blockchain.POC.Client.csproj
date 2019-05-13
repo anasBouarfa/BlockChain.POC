@@ -74,6 +74,9 @@
     <Compile Include="Windows\Mine.xaml.cs">
       <DependentUpon>Mine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MyBalance.xaml.cs">
+      <DependentUpon>MyBalance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewTransaction.xaml.cs">
       <DependentUpon>NewTransaction.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\Mine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MyBalance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

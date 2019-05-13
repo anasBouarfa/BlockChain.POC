@@ -42,13 +42,15 @@ namespace Blockchain.POC.Client
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Home homePage = new Home
+            new Home()
             {
                 Left = this.Left,
                 Top = this.Top
-            };
+            }.Show();
 
-            homePage.Show();
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
     }
 }
