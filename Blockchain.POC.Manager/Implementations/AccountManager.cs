@@ -39,14 +39,9 @@ namespace Blockchain.POC.Manager
             return null;
         }
 
-        public double GetAccountBalance(BlockChain chain, string address)
+        public int GetAccountBalance(BlockChain chain, string address)
         {
-            address = address.Encrypt();
-
-            return chain.Blocks.SelectMany(s => s.Transactions)
-                    .Where(t => t.FromAddress == address || t.ToAddress == address)
-                    .Select(s => s.ToAddress == address ? s.Amount : -s.Amount)
-                    .Sum();
+            return chain.Accounts.FirstOrDefault(a => a.Address == address).Balance.DecodeToNumber();
         }
 
         public Account GetAccountByAddress(BlockChain chain, string address)

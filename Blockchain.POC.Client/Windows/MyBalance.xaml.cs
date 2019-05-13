@@ -13,6 +13,7 @@ namespace Blockchain.POC.Client
         public MyBalance()
         {
             balance = _globalManager.GetAccountBalance(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string).ToString();
+
             InitializeComponent();
         }
 
