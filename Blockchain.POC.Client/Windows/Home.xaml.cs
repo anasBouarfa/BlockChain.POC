@@ -85,6 +85,15 @@ namespace Blockchain.POC.Client
 
         private void Mine_Click(object sender, RoutedEventArgs e)
         {
+            new Mine
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(250);
+
+            this.Close();
         }
     }
 }

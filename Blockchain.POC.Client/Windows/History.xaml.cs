@@ -12,6 +12,7 @@ namespace Blockchain.POC.Client
     {
         public History() : base()
         {
+            _chain = _globalManager.LoadLocalBlockChain();
             TransactionsDG.ItemsSource = LoadDGData();
             InitializeComponent();
         }
