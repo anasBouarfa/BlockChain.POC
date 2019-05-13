@@ -22,26 +22,19 @@ namespace Blockchain.POC.P2PClient
             WebSocket ws = new WebSocket(url);
             ws.OnMessage += (sender, e) =>
             {
-                if (e.Data == "Hi Client")
+                BlockChain newChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
+
+                if (_globalManager.IsLocalBlockChainUpToDate(chain, newChain))
                 {
-                    Console.WriteLine(e.Data);
-                }
-                else
-                {
-                    BlockChain newChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
+                    List<Transaction> newTransactions = new List<Transaction>();
+                    newTransactions.AddRange(newChain.PendingTransactions);
+                    newTransactions.AddRange(chain.PendingTransactions);
 
-                    if (_globalManager.IsLocalBlockChainUpToDate(chain, newChain))
-                    {
-                        List<Transaction> newTransactions = new List<Transaction>();
-                        newTransactions.AddRange(newChain.PendingTransactions);
-                        newTransactions.AddRange(chain.PendingTransactions);
+                    newChain.PendingTransactions?.AddRange(chain.PendingTransactions);
 
-                        newChain.PendingTransactions?.AddRange(chain.PendingTransactions);
+                    chain = newChain;
 
-                        chain = newChain;
-
-                        _globalManager.SaveBlockChain(chain);
-                    }
+                    _globalManager.SaveBlockChain(chain);
                 }
             };
 

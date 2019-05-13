@@ -38,6 +38,8 @@ namespace Blockchain.POC.Client
 
                 dictionnary.Add(url, client.Connect(url, chain));
 
+                client.Send(url, "Show me your blockchain !");
+
                 App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
                 chain = _globalManager.LoadLocalBlockChain();

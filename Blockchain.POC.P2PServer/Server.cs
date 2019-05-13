@@ -11,7 +11,6 @@ namespace Blockchain.POC.P2PServer
     {
         private WebSocketServer wss = null;
         private IGlobalManager _globalManager;
-        private int port;
 
         public Server()
         {
