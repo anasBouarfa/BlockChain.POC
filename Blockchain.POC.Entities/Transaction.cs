@@ -9,7 +9,7 @@ namespace Blockchain.POC.Entities
         public DateTime CreationDate { get; set; }
         public int Amount { get; set; }
 
-        public Transaction(string fromAddress, string toAddress, double amount)
+        public Transaction(string fromAddress, string toAddress, int amount)
         {
             FromAddress = fromAddress?.Encrypt();
             ToAddress = toAddress?.Encrypt();

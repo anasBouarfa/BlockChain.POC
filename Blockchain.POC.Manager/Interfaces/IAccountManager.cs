@@ -13,7 +13,7 @@ namespace Blockchain.POC.Manager
 
         string IsAccountLoginValid(BlockChain chain, string username, string password);
 
-        double GetAccountBalance(BlockChain chain, string address);
+        int GetAccountBalance(BlockChain chain, string address);
 
         bool IsAccountAddressValid(BlockChain chain, string address);
 
