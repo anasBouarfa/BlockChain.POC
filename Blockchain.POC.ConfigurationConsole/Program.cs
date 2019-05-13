@@ -2,19 +2,15 @@
 using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blockchain.POC.ConfigurationConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //Genesis block
             IGlobalManager _globalManager = new GlobalManager(12900);
-
 
             Account firstAccount = new Account("admin", "12345", "admin", "admin", new DateTime(1998, 9, 9))
             {
@@ -37,7 +33,6 @@ namespace Blockchain.POC.ConfigurationConsole
             };
 
             _globalManager.SaveBlockChain(blockchain);
-
         }
     }
 }
