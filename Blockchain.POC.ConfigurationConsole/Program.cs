@@ -10,8 +10,16 @@ namespace Blockchain.POC.ConfigurationConsole
     {
         private static void Main(string[] args)
         {
-            //Genesis block
-            IGlobalManager _globalManager = new GlobalManager(12900);
+            //Start--Genesis block
+            CreateGenesisBlock(12900);
+            Console.WriteLine("Genesis block was succesfully created");
+            Console.ReadLine();
+            //End--Genesis block
+        }
+
+        static void CreateGenesisBlock(int port)
+        {
+            IGlobalManager _globalManager = new GlobalManager(port);
 
             Account firstAccount = new Account("admin", "12345", "admin", "admin", new DateTime(1998, 9, 9))
             {
@@ -32,6 +40,7 @@ namespace Blockchain.POC.ConfigurationConsole
             var block = new Block(DateTime.Now, null, new List<Transaction>() { initialTransaction });
 
             block.Hash = _globalManager.CalculateBlockHash(block);
+            block.Index = 0;
 
             chain.Blocks = new List<Block>
             {
@@ -39,9 +48,6 @@ namespace Blockchain.POC.ConfigurationConsole
             };
 
             _globalManager.SaveBlockChain(chain);
-
-            Console.WriteLine("Genesis block was succesfully created");
-            Console.ReadLine();
         }
     }
 }

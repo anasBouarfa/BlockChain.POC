@@ -12,7 +12,7 @@ namespace System.IO
 
         public static string ReadFromFile(string path)
         {
-            if (FileHelper.IsFileExistant(path))
+            if (IsFileExistant(path))
             {
                 using (StreamReader r = new StreamReader(path))
                 {

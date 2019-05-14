@@ -2,6 +2,7 @@
 using Blockchain.POC.Manager;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using WebSocketSharp;
 
@@ -22,19 +23,21 @@ namespace Blockchain.POC.P2PClient
             WebSocket ws = new WebSocket(url);
             ws.OnMessage += (sender, e) =>
             {
-                BlockChain newChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
-
-                if (_globalManager.IsLocalBlockChainUpToDate(chain, newChain))
+                if(e.Data != null)
                 {
-                    List<Transaction> newTransactions = new List<Transaction>();
-                    newTransactions.AddRange(newChain.PendingTransactions);
-                    newTransactions.AddRange(chain.PendingTransactions);
+                    BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
 
-                    newChain.PendingTransactions?.AddRange(chain.PendingTransactions);
+                    if (_globalManager.IsLocalBlockChainUpToDate(chain, remoteChain))
+                    {
+                        if(remoteChain.PendingTransactions.Count >= chain.PendingTransactions.Count)
+                        {
+                            DateTime maxDateTime = chain.PendingTransactions.Max(pt => pt.CreationDate);
 
-                    chain = newChain;
+                            chain.PendingTransactions.Union(remoteChain.PendingTransactions.Where(pt => pt.CreationDate > maxDateTime));
 
-                    _globalManager.SaveBlockChain(chain);
+                            _globalManager.SaveBlockChain(chain);
+                        }
+                    }
                 }
             };
 
