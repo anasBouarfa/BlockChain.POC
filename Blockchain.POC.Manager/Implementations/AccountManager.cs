@@ -53,7 +53,7 @@ namespace Blockchain.POC.Manager
         {
             if (chain != null)
             {
-                return chain.Accounts.Any(a => a.Username == username.Encrypt());
+                return chain.Accounts.Exists(a => a.Username == username.Encrypt());
             }
 
             return false;

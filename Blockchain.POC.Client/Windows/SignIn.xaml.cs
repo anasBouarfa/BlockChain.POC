@@ -23,7 +23,6 @@ namespace Blockchain.POC.Client
 
             if (_chain != null)
             {
-                //Broadcast
                 P2PClient.Client client = new P2PClient.Client(_globalManager)
                 {
                     urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
