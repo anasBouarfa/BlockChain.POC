@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "P2P", "P2P", "{5420A999-C6E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{5FC17B9A-1227-4ACE-AA48-D18DC7C13DA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testCommon", "testCommon\testCommon.csproj", "{1FF17047-F5F0-4C27-B522-32F50800AB3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.Test", "testCommon\Blockchain.POC.Test.csproj", "{1FF17047-F5F0-4C27-B522-32F50800AB3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.ConfigurationConsole", "Blockchain.POC.ConfigurationConsole\Blockchain.POC.ConfigurationConsole.csproj", "{309F60C8-4B2D-46EA-8C0B-33646393B107}"
 EndProject

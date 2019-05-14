@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace testCommon
+namespace Blockchain.POC.Test
 {
     [TestClass]
     public class EncryptionTest
