@@ -19,7 +19,7 @@ namespace testCommon
 
                 Transaction transaction = chain.Blocks.SelectMany(s => s.Transactions).FirstOrDefault();
 
-                Assert.AreEqual("anas", transaction.FromAddress);
+                Assert.IsNotNull(transaction.ToAddress);
             }
         }
     }

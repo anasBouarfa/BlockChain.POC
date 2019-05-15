@@ -6,7 +6,7 @@ namespace Blockchain.POC.Entities
     {
         public List<Transaction> PendingTransactions { get; set; }
 
-        public List<Block> Blocks { set; get; }
+        public IList<Block> Blocks { set; get; }
 
         public List<Account> Accounts { get; set; }
 

@@ -9,7 +9,7 @@ namespace Blockchain.POC.Entities
         public DateTime TimeStamp { get; set; }
         public string PreviousHash { get; set; }
         public string Hash { get; set; }
-        public List<Transaction> Transactions { get; set; }
+        public IList<Transaction> Transactions { get; set; }
         public int Nonce { get; set; } = 0;
 
         public Block(DateTime timeStamp, string previousHash, List<Transaction> transactions)

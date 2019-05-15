@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Blockchain.POC.Entities
 {
     public class Transaction
     {
         public string FromAddress { get; set; }
+
+        [JsonProperty(PropertyName = "ToAddress")]
         public string ToAddress { get; set; }
         public DateTime CreationDate { get; set; }
         public int Amount { get; set; }
