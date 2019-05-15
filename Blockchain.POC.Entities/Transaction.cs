@@ -12,10 +12,15 @@ namespace Blockchain.POC.Entities
         public DateTime CreationDate { get; set; }
         public int Amount { get; set; }
 
+        public Transaction()
+        {
+
+        }
+
         public Transaction(string fromAddress, string toAddress, int amount, bool encrypt = true)
         {
-            FromAddress = encrypt ? fromAddress?.Encrypt() : FromAddress;
-            ToAddress = encrypt ? toAddress?.Encrypt() : ToAddress;
+            FromAddress = encrypt ? fromAddress?.Encrypt() : fromAddress;
+            ToAddress = encrypt ? toAddress?.Encrypt() : toAddress;
             Amount = amount;
             CreationDate = DateTime.Now;
         }

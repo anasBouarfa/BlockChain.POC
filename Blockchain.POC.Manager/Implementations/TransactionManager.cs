@@ -12,8 +12,8 @@ namespace Blockchain.POC.Manager
             address = address.Encrypt();
             IEnumerable<Transaction> transactions = chain.Blocks.SelectMany(t => t.Transactions);
 
-            IEnumerable<Transaction> recievedTransactions = transactions.Where(t => t.ToAddress == address.Encrypt());
-            IEnumerable<Transaction> createdTransactions = transactions.Where(t => t.FromAddress == address.Encrypt());
+            IEnumerable<Transaction> recievedTransactions = transactions.Where(t => t.ToAddress == address);
+            IEnumerable<Transaction> createdTransactions = transactions.Where(t => t.FromAddress == address);
 
             recievedTransactions = recievedTransactions.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
             createdTransactions = createdTransactions.Select(s => new Transaction("You", GetUserNameByAddress(chain, s.ToAddress.Decrypt()), s.Amount));
@@ -23,7 +23,7 @@ namespace Blockchain.POC.Manager
 
         public string GetUserNameByAddress(BlockChain chain, string address)
         {
-            return chain.Accounts.FirstOrDefault(a => a.Address == address).Username;
+            return chain.Accounts.FirstOrDefault(a => a.Address == address.Decrypt()).Username;
         }
 
         public List<Transaction> GetPendingTransactionsByAddress(BlockChain chain, string address)
