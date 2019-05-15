@@ -11,44 +11,49 @@ namespace Blockchain.POC.P2PServer
     {
         private WebSocketServer wss = null;
         private IGlobalManager _globalManager;
+        private static int _port;
 
         public Server()
         {
         }
 
-        public Server(IGlobalManager globalManager) : base()
+        public Server(int port) : base()
         {
-            _globalManager = globalManager;
+            _port = port;
+            _globalManager = new GlobalManager(port);
         }
 
-        public void Start(int port)
+        public void Start()
         {
-            wss = new WebSocketServer(string.Format("ws://localhost:{0}", port));
+            wss = new WebSocketServer(string.Format("ws://localhost:{0}", _port));
             wss.AddWebSocketService<Server>("/BlockchainPOC");
             wss.Start();
         }
 
         protected override void OnMessage(MessageEventArgs e)
         {
-            if (e.Data == "Show me your blockchain !")
+            using (_globalManager = new GlobalManager(_port))
             {
-                Send(_globalManager.LoadBlockChainAsString());
-            }
-            else
-            {
-                BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
-                BlockChain localChain = _globalManager.LoadLocalBlockChain();
-
-                if (!_globalManager.IsLocalBlockChainUpToDate(localChain, remoteChain))
+                if (e.Data == "Show me your blockchain !")
                 {
-                    _globalManager.SaveBlockChain(remoteChain);
+                    Send(_globalManager.LoadBlockChainAsString());
                 }
                 else
                 {
-                    if (remoteChain.Accounts.Count > localChain.Accounts.Count)
+                    BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
+                    BlockChain localChain = _globalManager.LoadLocalBlockChain();
+
+                    if (!_globalManager.IsLocalBlockChainUpToDate(localChain, remoteChain))
                     {
-                        localChain.Accounts = remoteChain.Accounts;
-                        _globalManager.SaveBlockChain(localChain);
+                        _globalManager.SaveBlockChain(remoteChain);
+                    }
+                    else
+                    {
+                        if (remoteChain.Accounts.Count > localChain.Accounts.Count)
+                        {
+                            localChain.Accounts = remoteChain.Accounts;
+                            _globalManager.SaveBlockChain(localChain);
+                        }
                     }
                 }
             }

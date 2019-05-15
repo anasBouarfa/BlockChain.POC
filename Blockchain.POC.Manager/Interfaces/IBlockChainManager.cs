@@ -1,8 +1,9 @@
 ﻿using Blockchain.POC.Entities;
+using System;
 
 namespace Blockchain.POC.Manager
 {
-    public partial interface IGlobalManager
+    public partial interface IGlobalManager : IDisposable
     {
         #region Blockchain methods
 

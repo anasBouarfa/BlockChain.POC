@@ -30,6 +30,16 @@ namespace Blockchain.POC.Client
 
                 client.BroadcastChain(_chain);
             }
+
+            new Home
+            {
+                Top = this.Top,
+                Left = this.Left
+            }.Show();
+
+            System.Threading.Thread.Sleep(200);
+
+            this.Close();
         }
     }
 }

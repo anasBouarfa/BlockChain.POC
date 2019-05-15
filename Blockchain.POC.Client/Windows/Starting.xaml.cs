@@ -29,8 +29,8 @@ namespace Blockchain.POC.Client
             {
                 _globalManager = new GlobalManager(int.Parse(Port.Text));
 
-                CurrentConnection.Server = new Server(_globalManager);
-                CurrentConnection.Server.Start(int.Parse(Port.Text));
+                CurrentConnection.Server = new Server(int.Parse(Port.Text));
+                CurrentConnection.Server.Start();
 
 
 

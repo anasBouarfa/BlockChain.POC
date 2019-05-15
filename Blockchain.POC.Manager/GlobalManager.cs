@@ -13,19 +13,7 @@ namespace Blockchain.POC.Manager
 
         public void Dispose()
         {
-            Dispose(true);
-            // Suppress finalization.
             GC.SuppressFinalize(this);
-        }
-
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                // free managed resources
-            }
-            // free native resources if there are any.
         }
     }
 }
