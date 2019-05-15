@@ -1,5 +1,6 @@
 ﻿using Blockchain.POC.Common;
 using Blockchain.POC.Entities;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -13,9 +14,14 @@ namespace Blockchain.POC.Client
         public History() : base()
         {
             _chain = _globalManager.LoadLocalBlockChain();
-            TransactionsDG = new System.Windows.Controls.DataGrid();
-            TransactionsDG.ItemsSource = LoadDGData();
             InitializeComponent();
+            TransactionsDG.ItemsSource = LoadDGData().Select(s => new
+            {
+                s.FromAddress,
+                s.ToAddress,
+                s.Amount,
+                CreationDate = s.CreationDate.ToShortDateString()
+            });
         }
 
         private List<Transaction> LoadDGData()

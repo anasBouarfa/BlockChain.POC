@@ -7,7 +7,6 @@ namespace Blockchain.POC.Entities
     {
         public string FromAddress { get; set; }
 
-        [JsonProperty(PropertyName = "ToAddress")]
         public string ToAddress { get; set; }
         public DateTime CreationDate { get; set; }
         public int Amount { get; set; }
