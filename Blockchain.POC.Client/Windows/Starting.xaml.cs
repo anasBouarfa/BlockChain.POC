@@ -43,7 +43,7 @@ namespace Blockchain.POC.Client
                     var dictionnary = new Dictionary<string, WebSocket>();
                     string url = $"ws://localhost:{int.Parse(RemotePort.Text)}/BlockchainPOC";
                     dictionnary.Add(url, client.Connect(url, chain));
-
+                    client.urlwebSockets = dictionnary;
                     client.Send(url, "Show me your blockchain !");
 
                     App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
