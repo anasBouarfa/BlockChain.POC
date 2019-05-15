@@ -10,7 +10,7 @@ namespace Blockchain.POC.Manager
 
         public string IsAccountLoginValid(BlockChain chain, string username, string password)
         {
-            return chain.Accounts.FirstOrDefault(a => a.HashedPassword == password.GetHash() && a.Username == username).Address;
+            return chain.Accounts.FirstOrDefault(a => a.HashedPassword == password.GetHash() && a.Username == username.Encrypt()).Address;
         }
 
         public bool IsUsernameTaken(BlockChain chain, string username)

@@ -33,17 +33,21 @@ namespace Blockchain.POC.Client
                 _globalManager = new GlobalManager(int.Parse(Port.Text));
 
                 App.Current.Properties[ApplicationPropertiesConstants.Port] = int.Parse(Port.Text);
-                BlockChain chain = _globalManager.LoadLocalBlockChain();
 
-                P2PClient.Client client = new P2PClient.Client(_globalManager);
+                if(Port.Text != "12900")
+                {
+                    BlockChain chain = _globalManager.LoadLocalBlockChain();
 
-                var dictionnary = new Dictionary<string, WebSocket>();
-                string url = $"ws://localhost:{int.Parse(RemotePort.Text)}/BlockchainPOC";
-                dictionnary.Add(url, client.Connect(url, chain));
+                    P2PClient.Client client = new P2PClient.Client(_globalManager);
 
-                client.Send(url, "Show me your blockchain !");
+                    var dictionnary = new Dictionary<string, WebSocket>();
+                    string url = $"ws://localhost:{int.Parse(RemotePort.Text)}/BlockchainPOC";
+                    dictionnary.Add(url, client.Connect(url, chain));
 
-                App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
+                    client.Send(url, "Show me your blockchain !");
+
+                    App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
+                }
 
                 MainWindow mainWindow = new MainWindow
                 {

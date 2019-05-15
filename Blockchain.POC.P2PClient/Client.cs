@@ -27,16 +27,23 @@ namespace Blockchain.POC.P2PClient
                 {
                     BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
 
-                    if (_globalManager.IsLocalBlockChainUpToDate(chain, remoteChain))
+                    if(chain != null)
                     {
-                        if(remoteChain.PendingTransactions.Count >= chain.PendingTransactions.Count)
+                        if (_globalManager.IsLocalBlockChainUpToDate(chain, remoteChain))
                         {
-                            DateTime maxDateTime = chain.PendingTransactions.Max(pt => pt.CreationDate);
+                            if (remoteChain.PendingTransactions.Count >= chain.PendingTransactions.Count)
+                            {
+                                DateTime maxDateTime = chain.PendingTransactions.Max(pt => pt.CreationDate);
 
-                            chain.PendingTransactions.Union(remoteChain.PendingTransactions.Where(pt => pt.CreationDate > maxDateTime));
+                                chain.PendingTransactions.Union(remoteChain.PendingTransactions.Where(pt => pt.CreationDate > maxDateTime));
 
-                            _globalManager.SaveBlockChain(chain);
+                                _globalManager.SaveBlockChain(chain);
+                            }
                         }
+                    }
+                    else
+                    {
+                        _globalManager.SaveBlockChain(remoteChain);
                     }
                 }
             };

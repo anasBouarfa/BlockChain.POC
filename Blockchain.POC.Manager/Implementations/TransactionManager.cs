@@ -9,11 +9,14 @@ namespace Blockchain.POC.Manager
     {
         public List<Transaction> GetTransactionsByAddress(BlockChain chain, string address)
         {
-            IEnumerable<Transaction> recievedTransactions = chain.Blocks.SelectMany(t => t.Transactions).Where(t => t.ToAddress == address);
-            IEnumerable<Transaction> createdTransactions = chain.Blocks.SelectMany(t => t.Transactions).Where(t => t.FromAddress == address);
+            address = address.Encrypt();
+            IEnumerable<Transaction> transactions = chain.Blocks.SelectMany(t => t.Transactions);
 
-            recievedTransactions = recievedTransactions.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress), "You", s.Amount, false));
-            createdTransactions = createdTransactions.Select(s => new Transaction("You", GetUserNameByAddress(chain, s.ToAddress), s.Amount));
+            IEnumerable<Transaction> recievedTransactions = transactions.Where(t => t.ToAddress == address.Encrypt());
+            IEnumerable<Transaction> createdTransactions = transactions.Where(t => t.FromAddress == address.Encrypt());
+
+            recievedTransactions = recievedTransactions.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
+            createdTransactions = createdTransactions.Select(s => new Transaction("You", GetUserNameByAddress(chain, s.ToAddress.Decrypt()), s.Amount));
 
             return createdTransactions.Union(recievedTransactions).OrderByDescending(o => o.CreationDate).ToList();
         }

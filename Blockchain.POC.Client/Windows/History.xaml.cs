@@ -13,6 +13,7 @@ namespace Blockchain.POC.Client
         public History() : base()
         {
             _chain = _globalManager.LoadLocalBlockChain();
+            TransactionsDG = new System.Windows.Controls.DataGrid();
             TransactionsDG.ItemsSource = LoadDGData();
             InitializeComponent();
         }

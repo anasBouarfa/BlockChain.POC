@@ -26,7 +26,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
@@ -39,7 +39,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
@@ -52,7 +52,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
@@ -65,7 +65,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
@@ -78,7 +78,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
@@ -91,7 +91,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(200);
 
             this.Close();
         }
