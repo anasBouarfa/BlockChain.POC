@@ -9,11 +9,13 @@ namespace Blockchain.POC.Client
     {
         protected IGlobalManager _globalManager;
         protected BlockChain _chain;
+        protected string _message;
 
         public BaseWindow() : base()
         {
             _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
             _chain = _globalManager.LoadLocalBlockChain();
+            _message = string.Empty;
         }
     }
 }

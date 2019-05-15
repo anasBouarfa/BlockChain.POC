@@ -16,6 +16,7 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
+            <TextBlock x:Name="FullName" Text="{Binding ElementName=Message}" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
             <TextBlock Text="Log in : " FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
             <Grid Margin="10 5 10 0">
                 <Grid.ColumnDefinitions>
@@ -32,14 +33,6 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Password " FontWeight="Bold" FontSize="15" Grid.Column="0" />
                 <PasswordBox Name="Password" Grid.Column="1" />
-            </Grid>
-            <Grid Margin="10 5 10 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Node port" FontWeight="Bold" FontSize="15" Grid.Column="0" />
-                <TextBox Name="RemotePort" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" />
             </Grid>
             <Button Name="Submit" Content="Log In" Margin="10 15 10 0" Click ="Submit_Click" />
             <Button Name="SignIn" Content="Sign In" Margin="10 15 10 0" Click ="SignIn_Click" />

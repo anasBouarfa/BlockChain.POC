@@ -16,9 +16,22 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock Text="Choose the port you want your node to run on : " FontSize="15" Margin="10 20 0 0" FontWeight="Bold" />
-            <TextBox Name="Port" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Margin="10 5 10 0" />
-
+            <Grid Margin="10 5 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Choose the port you want your node to run on : " FontWeight="Bold" FontSize="15" Grid.Column="0" />
+                <TextBox Name="Port" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" />
+            </Grid>
+            <Grid Margin="10 5 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Choose the first note you want to connect to : " FontWeight="Bold" FontSize="15" Grid.Column="0" />
+                <TextBox Name="RemotePort" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" />
+            </Grid>
             <Button Name="Submit" Content="Connect" Margin="10 15 10 0" Click ="Submit_Click" />
         </StackPanel>
     </Border>

@@ -23,28 +23,9 @@ namespace Blockchain.POC.Client
             if (!Username.Text.IsNullOrWhitespace() &&
                !Password.Password.IsNullOrWhitespace())
             {
-                BlockChain chain = _globalManager.LoadLocalBlockChain();
+                _chain = _globalManager.LoadLocalBlockChain();
 
-                P2PClient.Client client = new P2PClient.Client(_globalManager);
-
-                if (RemotePort.Text.IsNullOrWhitespace())
-                {
-                    //handle it
-                }
-
-                var dictionnary = new Dictionary<string, WebSocket>();
-
-                string url = $"ws://localhost:{int.Parse(RemotePort.Text)}/BlockchainPOC";
-
-                dictionnary.Add(url, client.Connect(url, chain));
-
-                client.Send(url, "Show me your blockchain !");
-
-                App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
-
-                chain = _globalManager.LoadLocalBlockChain();
-
-                string userHash = _globalManager.IsAccountLoginValid(chain, Username.Text, Password.Password);
+                string userHash = _globalManager.IsAccountLoginValid(_chain, Username.Text, Password.Password);
 
                 if (!userHash.IsNullOrWhitespace())
                 {
@@ -54,6 +35,7 @@ namespace Blockchain.POC.Client
                 }
                 else //not authorized
                 {
+                    _message = "Incorrect credentials";
                 }
             }
         }
