@@ -32,10 +32,6 @@ namespace Blockchain.POC.P2PServer
         {
             if (e.Data == "Show me your blockchain !")
             {
-                if(this == null)
-                {
-
-                }
                 Send(_globalManager.LoadBlockChainAsString());
             }
             else

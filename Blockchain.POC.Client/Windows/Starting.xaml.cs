@@ -27,8 +27,8 @@ namespace Blockchain.POC.Client
             if (!Port.Text.IsNullOrWhitespace()
                 && !RemotePort.Text.IsNullOrWhitespace())
             {
-                Server server = new Server();
-                server.Start(int.Parse(Port.Text));
+                CurrentConnection.Server = new Server();
+                CurrentConnection.Server.Start(int.Parse(Port.Text));
 
                 _globalManager = new GlobalManager(int.Parse(Port.Text));
 
