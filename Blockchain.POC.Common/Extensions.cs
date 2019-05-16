@@ -28,7 +28,7 @@ namespace System
         public static string EncodeNumber(this int num)
         {
             if (num < 1)
-                return "";
+                return string.Empty;
             int[] nums = new int[9];
             int pos = 0;
             var numbers = "2589314706";
@@ -50,7 +50,7 @@ namespace System
         public static int DecodeToNumber(this string str)
         {
             if (str.Length != 9)
-                return -1;
+                return 0;
             long num = 0;
             var numbers = "2589314706";
             foreach (char ch in str)

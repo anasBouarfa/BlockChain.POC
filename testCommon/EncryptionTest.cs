@@ -7,6 +7,7 @@ namespace Blockchain.POC.Test
     public class EncryptionTest
     {
         [TestMethod]
+        [DataRow(0)]
         [DataRow(235874)]
         [DataRow(58775)]
         [DataRow(988545479)]
@@ -19,7 +20,7 @@ namespace Blockchain.POC.Test
 
         [TestMethod]
         [DataRow("Oumaima Mdaghri")]
-        [DataRow("j'ai fait les courses")]
+        [DataRow("j'ai fais les courses")]
         [DataRow("Accenture")]
         public void EncryptTest(string text)
         {
