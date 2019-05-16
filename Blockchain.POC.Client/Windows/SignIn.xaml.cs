@@ -29,6 +29,7 @@ namespace Blockchain.POC.Client
                 };
 
                 client.BroadcastChain(_chain);
+                _globalManager.SaveBlockChain(_chain);
             }
 
             new Home

@@ -31,13 +31,24 @@ namespace Blockchain.POC.P2PClient
                     {
                         if (_globalManager.IsLocalBlockChainUpToDate(chain, remoteChain))
                         {
-                            if (remoteChain.PendingTransactions.Count >= chain.PendingTransactions.Count)
+                            if(!chain.PendingTransactions.Any())
                             {
-                                DateTime maxDateTime = chain.PendingTransactions.Max(pt => pt.CreationDate);
+                                if(remoteChain.PendingTransactions.Any())
+                                {
+                                    chain.PendingTransactions = remoteChain.PendingTransactions;
+                                    _globalManager.SaveBlockChain(chain);
+                                }
+                            }
+                            else
+                            {
+                                if (remoteChain.PendingTransactions.Count >= chain.PendingTransactions.Count)
+                                {
+                                    DateTime maxDateTime = chain.PendingTransactions.Max(pt => pt.CreationDate);
 
-                                chain.PendingTransactions.Union(remoteChain.PendingTransactions.Where(pt => pt.CreationDate > maxDateTime));
+                                    chain.PendingTransactions.Union(remoteChain.PendingTransactions.Where(pt => pt.CreationDate > maxDateTime));
 
-                                _globalManager.SaveBlockChain(chain);
+                                    _globalManager.SaveBlockChain(chain);
+                                }
                             }
                         }
                     }
