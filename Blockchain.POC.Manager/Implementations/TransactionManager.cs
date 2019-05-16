@@ -16,7 +16,7 @@ namespace Blockchain.POC.Manager
             IEnumerable<Transaction> createdTransactions = transactions.Where(t => t.FromAddress == address);
 
             recievedTransactions = recievedTransactions.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
-            createdTransactions = createdTransactions.Select(s => new Transaction("You", GetUserNameByAddress(chain, s.ToAddress.Decrypt()), s.Amount));
+            createdTransactions = createdTransactions.Select(s => new Transaction("You", GetUserNameByAddress(chain, s.ToAddress.Decrypt()), s.Amount, false));
 
             return createdTransactions.Union(recievedTransactions).OrderByDescending(o => o.CreationDate).ToList();
         }
@@ -32,7 +32,13 @@ namespace Blockchain.POC.Manager
             {
                 address = address.Encrypt();
 
-                return chain.PendingTransactions.Where(t => t.FromAddress == address || t.ToAddress == address).ToList();
+                var recieved = chain.PendingTransactions.Where(t => t.ToAddress == address);
+                var created = chain.PendingTransactions.Where(t => t.FromAddress == address);
+
+                recieved = recieved.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
+                created = created.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
+
+                return recieved.Union(created).OrderByDescending(o => o.CreationDate).ToList();
             }
             else
             {

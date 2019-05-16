@@ -1,4 +1,5 @@
 ﻿using Blockchain.POC.Common;
+using System.Linq;
 using System.Windows;
 
 namespace Blockchain.POC.Client
@@ -8,15 +9,17 @@ namespace Blockchain.POC.Client
     /// </summary>
     public partial class MyBalance : BaseWindow
     {
-        public string balance { get; set; }
-
         public MyBalance()
         {
             
             
             InitializeComponent();
-            DataContext = new { balance = _globalManager.GetAccountBalance(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string).ToString() };
-            PendingTransactionsDG.ItemsSource = _globalManager.GetPendingTransactionsByAddress(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
+
+            var balance = _globalManager.GetAccountBalance(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string).ToString();
+            var pendingTransactions =_globalManager.GetPendingTransactionsByAddress(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
+            PendingTransactionsDG.ItemsSource = pendingTransactions;
+            DataContext = new { balance,
+                                finalBalance = int.Parse(balance) + pendingTransactions.Sum(s => s.ToAddress == "You" ? s.Amount : s.FromAddress == "You" ? -s.Amount : s.Amount)};
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
