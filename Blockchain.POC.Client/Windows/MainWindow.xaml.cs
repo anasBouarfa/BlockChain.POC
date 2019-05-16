@@ -1,10 +1,7 @@
 ﻿using Blockchain.POC.Common;
-using Blockchain.POC.Entities;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-using WebSocketSharp;
 
 namespace Blockchain.POC.Client
 {

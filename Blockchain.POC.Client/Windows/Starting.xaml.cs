@@ -15,7 +15,7 @@ namespace Blockchain.POC.Client
     /// </summary>
     public partial class Starting : Window
     {
-        IGlobalManager _globalManager;
+        private IGlobalManager _globalManager;
 
         public Starting()
         {
@@ -32,11 +32,9 @@ namespace Blockchain.POC.Client
                 CurrentConnection.Server = new Server(int.Parse(Port.Text));
                 CurrentConnection.Server.Start();
 
-
-
                 App.Current.Properties[ApplicationPropertiesConstants.Port] = int.Parse(Port.Text);
 
-                if(Port.Text != "12900")
+                if (Port.Text != "12900")
                 {
                     BlockChain chain = _globalManager.LoadLocalBlockChain();
 

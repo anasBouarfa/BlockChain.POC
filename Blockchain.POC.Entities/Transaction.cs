@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 
 namespace Blockchain.POC.Entities
 {
@@ -13,7 +12,6 @@ namespace Blockchain.POC.Entities
 
         public Transaction()
         {
-
         }
 
         public Transaction(string fromAddress, string toAddress, int amount, bool encrypt = true)

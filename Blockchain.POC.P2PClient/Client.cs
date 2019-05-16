@@ -2,8 +2,8 @@
 using Blockchain.POC.Manager;
 using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using WebSocketSharp;
 
 namespace Blockchain.POC.P2PClient
@@ -23,17 +23,17 @@ namespace Blockchain.POC.P2PClient
             WebSocket ws = new WebSocket(url);
             ws.OnMessage += (sender, e) =>
             {
-                if(e.Data != null)
+                if (e.Data != null)
                 {
                     BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
 
-                    if(chain != null)
+                    if (chain != null)
                     {
                         if (_globalManager.IsLocalBlockChainUpToDate(chain, remoteChain))
                         {
-                            if(!chain.PendingTransactions.Any())
+                            if (!chain.PendingTransactions.Any())
                             {
-                                if(remoteChain.PendingTransactions.Any())
+                                if (remoteChain.PendingTransactions.Any())
                                 {
                                     chain.PendingTransactions = remoteChain.PendingTransactions;
                                     _globalManager.SaveBlockChain(chain);

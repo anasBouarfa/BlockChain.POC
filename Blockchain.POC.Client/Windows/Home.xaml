@@ -16,7 +16,7 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock x:Name="FullName" Text="{Binding ElementName=FullName}" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
+            <TextBlock x:Name="FullName" Text="{Binding ElementName=FullName}" FontSize="12" Margin="10 20 0 0" FontWeight="Bold" />
             <Button Content="My Balance" Margin="10 15 10 0" Background="SkyBlue" FontWeight="DemiBold" Click="MyBalance_Click" />
             <Button Content="My transactions"  Margin="10 15 10 0" Background="YellowGreen" FontWeight="DemiBold" Click="MyTransactions_Click" />
             <Button Content="New transaction"  Margin="10 15 10 0" Background="LightSeaGreen" FontWeight="DemiBold" Click="NewTransaction_Click" />

@@ -2,7 +2,6 @@
 using Blockchain.POC.Manager;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Blockchain.POC.ConfigurationConsole
 {
@@ -17,7 +16,7 @@ namespace Blockchain.POC.ConfigurationConsole
             //End--Genesis block
         }
 
-        static void CreateGenesisBlock(int port)
+        private static void CreateGenesisBlock(int port)
         {
             IGlobalManager _globalManager = new GlobalManager(port);
 

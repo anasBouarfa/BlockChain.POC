@@ -1,7 +1,6 @@
 ﻿using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using Newtonsoft.Json;
-using System;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 

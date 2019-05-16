@@ -28,7 +28,7 @@ namespace Blockchain.POC.Manager
 
         public List<Transaction> GetPendingTransactionsByAddress(BlockChain chain, string address)
         {
-            if(!chain.PendingTransactions.IsNullOrEmpty() && !address.IsNullOrWhitespace())
+            if (!chain.PendingTransactions.IsNullOrEmpty() && !address.IsNullOrWhitespace())
             {
                 address = address.Encrypt();
 

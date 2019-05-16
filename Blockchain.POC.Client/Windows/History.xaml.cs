@@ -1,7 +1,7 @@
 ﻿using Blockchain.POC.Common;
 using Blockchain.POC.Entities;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace Blockchain.POC.Client

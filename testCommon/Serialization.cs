@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using Blockchain.POC.Entities;
+﻿using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace testCommon
 {

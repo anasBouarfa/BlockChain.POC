@@ -1,16 +1,7 @@
-﻿using System;
+﻿using Blockchain.POC.Common;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using WebSocketSharp;
 
 namespace Blockchain.POC.Client
 {
@@ -33,7 +24,7 @@ namespace Blockchain.POC.Client
                 Top = this.Top
             }.Show();
 
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(150);
 
             this.Close();
         }
@@ -41,6 +32,13 @@ namespace Blockchain.POC.Client
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             _chain = _globalManager.AddBlock(_chain);
+            _globalManager.SaveBlockChain(_chain);
+
+            P2PClient.Client client = new P2PClient.Client(_globalManager)
+            {
+                urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
+            };
+            client.BroadcastChain(_chain);
         }
     }
 }

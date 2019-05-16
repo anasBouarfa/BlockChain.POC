@@ -22,7 +22,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Your balance :" FontWeight="Bold" FontSize="15" Grid.Column="0" />
-                <TextBlock Text="{Binding balance}" Grid.Column="1" FontWeight="Bold" FontSize="15"/>
+                <TextBlock Text="{Binding balance}" Grid.Column="1" FontWeight="Bold" FontSize="15" />
             </Grid>
             <TextBlock Text="Your pending transactions" FontSize="20" Margin="10 20 0 20" FontWeight="Bold" />
             <DataGrid Name="PendingTransactionsDG" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" Width="350" AutoGenerateColumns="False">

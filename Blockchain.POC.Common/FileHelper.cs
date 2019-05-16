@@ -64,7 +64,7 @@ namespace System.IO
             {
                 string fullPath = Path.Combine(path, fileName);
 
-                if(!Directory.Exists(path))
+                if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
