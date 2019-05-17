@@ -9,13 +9,16 @@ namespace Blockchain.POC.UI
     {
         protected IGlobalManager _globalManager;
         protected BlockChain _chain;
+        protected int _port;
         protected string _message;
 
         public BaseWindow() : base()
         {
-            _globalManager = new GlobalManager((App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value);
+            _port = (App.Current.Properties[ApplicationPropertiesConstants.Port] as int?).Value;
+            _globalManager = new GlobalManager(_port);
             _chain = _globalManager.LoadLocalBlockChain();
             _message = string.Empty;
+            Title = $"MyWallet - {_port}";
         }
     }
 }
