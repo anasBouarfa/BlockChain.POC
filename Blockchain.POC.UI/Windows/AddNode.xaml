@@ -1,0 +1,25 @@
+﻿<local:BaseWindow x:Class="Blockchain.POC.UI.AddNode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Blockchain.POC.UI"
+        mc:Ignorable="d"
+        Title="MyWallet" Height="400" Width="400">
+    <Border Padding="10">
+        <StackPanel Background="LightGray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
+                <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
+            </Grid>
+            <TextBlock Text="Choose a node you want to connect with: " FontSize="15" Margin="10 20 0 0" FontWeight="Bold" />
+            <TextBox Name="Port" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" Margin="10 5 10 0" />
+
+            <Button Name="Submit" Content="Connect" Margin="10 15 10 0" Click ="Submit_Click" />
+        </StackPanel>
+    </Border>
+</local:BaseWindow>

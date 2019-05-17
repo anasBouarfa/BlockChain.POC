@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.Client", "Blockchain.POC.Client\Blockchain.POC.Client.csproj", "{21B1D30F-C9B2-412C-B1B8-815489170CF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.UI", "Blockchain.POC.UI\Blockchain.POC.UI.csproj", "{21B1D30F-C9B2-412C-B1B8-815489170CF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.Common", "Blockchain.POC.Common\Blockchain.POC.Common.csproj", "{97E1D90C-5CF4-4E90-82B7-B2779B3AFD0B}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.P2PClient", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "P2P", "P2P", "{5420A999-C6EA-4508-84EB-C358BAF18088}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{5FC17B9A-1227-4ACE-AA48-D18DC7C13DA0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{5FC17B9A-1227-4ACE-AA48-D18DC7C13DA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.POC.Test", "testCommon\Blockchain.POC.Test.csproj", "{1FF17047-F5F0-4C27-B522-32F50800AB3E}"
 EndProject
