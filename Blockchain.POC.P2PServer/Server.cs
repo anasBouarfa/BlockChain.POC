@@ -1,5 +1,6 @@
 ﻿using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
+using System.Linq;
 using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -42,17 +43,22 @@ namespace Blockchain.POC.P2PServer
                     BlockChain remoteChain = JsonConvert.DeserializeObject<BlockChain>(e.Data);
                     BlockChain localChain = _globalManager.LoadLocalBlockChain();
 
+                    bool updateBlockchain = false;
+
                     if (!_globalManager.IsLocalBlockChainUpToDate(localChain, remoteChain))
                     {
-                        _globalManager.SaveBlockChain(remoteChain);
+                        updateBlockchain = true;
                     }
-                    else
+
+                    if (remoteChain.Accounts.Count > localChain.Accounts.Count)
                     {
-                        if (remoteChain.Accounts.Count > localChain.Accounts.Count)
-                        {
-                            localChain.Accounts = remoteChain.Accounts;
-                            _globalManager.SaveBlockChain(localChain);
-                        }
+                        localChain.Accounts = remoteChain.Accounts.Union(localChain.Accounts).Distinct().ToList();
+                        updateBlockchain = true;
+                    }
+
+                    if(updateBlockchain)
+                    {
+                        _globalManager.SaveBlockChain(localChain);
                     }
                 }
             }

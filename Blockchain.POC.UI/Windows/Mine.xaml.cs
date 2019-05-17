@@ -39,6 +39,17 @@ namespace Blockchain.POC.UI
                 urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
             };
             client.BroadcastChain(_chain);
+            _globalManager.SaveBlockChain(_chain);
+
+            new Home()
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(150);
+
+            this.Close();
         }
     }
 }

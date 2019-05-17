@@ -35,7 +35,7 @@
             </DataGrid>
             <Grid Margin="10 5 10 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Your balance after validation of pending transactions :" FontWeight="Bold" FontSize="12" Grid.Column="0" Background="PaleVioletRed" />
