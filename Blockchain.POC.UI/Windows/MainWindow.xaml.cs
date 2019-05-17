@@ -33,6 +33,7 @@ namespace Blockchain.POC.UI
                 else //not authorized
                 {
                     _message = "Incorrect credentials";
+                    //TODO : Manage error
                 }
             }
         }

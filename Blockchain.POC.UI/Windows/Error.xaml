@@ -5,7 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Blockchain.POC.UI"
         mc:Ignorable="d"
-        Title="Error" Height="450" Width="800">
-    <Grid>
-    </Grid>
+        Title="MyWallet" Height="400" Width="400">
+    <Border Padding="10">
+        <StackPanel Background="LightGray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
+                <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
+            </Grid>
+            <TextBlock Text="ERROR" FontWeight="Bold" FontSize="30" Margin="10 15 10 0" HorizontalAlignment="Center"  Background="DarkRed"/>
+            <TextBlock Text="{Binding message}" FontWeight="Bold" FontSize="30" Margin="10 15 10 0" HorizontalAlignment="Center"  Background="DarkRed"/>
+            <Button Name="Return" Content="Return" Margin="10 15 10 0" Click ="Return_Click" />
+        </StackPanel>
+    </Border>
 </Window>
