@@ -45,5 +45,19 @@ namespace Blockchain.POC.Manager
                 return null;
             }
         }
+
+        public int GetPendingTransactionsBaluByAddress(BlockChain chain, string address)
+        {
+            if (!chain.PendingTransactions.IsNullOrEmpty() && !address.IsNullOrWhitespace())
+            {
+                address = address.Encrypt();
+
+                return chain.PendingTransactions.Where(t => t.ToAddress == address && t.FromAddress == address).Sum(s => s.ToAddress == address ? s.Amount : -s.Amount );
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
