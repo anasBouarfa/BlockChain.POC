@@ -1,6 +1,7 @@
 ﻿using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
 using System.Linq;
+using System;
 using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -52,7 +53,7 @@ namespace Blockchain.POC.P2PServer
 
                     if (remoteChain.Accounts.Count > localChain.Accounts.Count)
                     {
-                        localChain.Accounts = remoteChain.Accounts.Union(localChain.Accounts).Distinct().ToList();
+                        localChain.Accounts = remoteChain.Accounts.Union(localChain.Accounts).DistinctBy(d => d.Address).ToList();
                         updateBlockchain = true;
                     }
 

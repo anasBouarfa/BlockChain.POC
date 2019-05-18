@@ -59,8 +59,6 @@ namespace Blockchain.POC.Manager
                 chain.Accounts.FirstOrDefault(a => a.Address == transaction.ToAddress.Decrypt()).Balance = (recieverAccountBalance.DecodeToNumber() + transaction.Amount).EncodeNumber();
             }
 
-            chain.PendingTransactions = new List<Transaction>();
-
             return chain;
         }
 

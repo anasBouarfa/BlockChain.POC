@@ -9,5 +9,10 @@ namespace System
         {
             return list == null || !list.Any();
         }
+
+        public static IEnumerable<T> DistinctBy<T, TKey>(this IEnumerable<T> items, Func<T, TKey> property)
+        {
+            return items.GroupBy(property).Select(x => x.First());
+        }
     }
 }

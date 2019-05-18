@@ -14,7 +14,6 @@ namespace Blockchain.POC.UI
         {
             address = App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string;
             InitializeComponent();
-            DataContext = new { FullName = _globalManager.GetFullnameAccountByAddress(_chain, address) };
         }
 
         private void MyBalance_Click(object sender, RoutedEventArgs e)
