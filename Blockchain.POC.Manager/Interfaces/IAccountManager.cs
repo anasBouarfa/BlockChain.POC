@@ -21,6 +21,8 @@ namespace Blockchain.POC.Manager
 
         Account EncryptAccount(Account account);
 
+        string GetFullnameAccountByAddress(BlockChain chain, string address);
+
         #endregion Account methods
     }
 }

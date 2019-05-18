@@ -49,15 +49,14 @@ namespace Blockchain.POC.Manager
 
             foreach (var transaction in block.Transactions)
             {
-                var senderAccount = chain.Accounts.FirstOrDefault(a => a.Address == transaction.FromAddress);
-                chain.Accounts.Remove(senderAccount);
-                senderAccount.Balance = (senderAccount.Balance.DecodeToNumber() - transaction.Amount).EncodeNumber();
-                chain.Accounts.Add(senderAccount);
+                if(transaction.FromAddress != null)
+                {
+                    var senderAccountBalance = chain.Accounts.FirstOrDefault(a => a.Address == transaction.FromAddress.Decrypt()).Balance;
+                    chain.Accounts.FirstOrDefault(a => a.Address == transaction.FromAddress.Decrypt()).Balance = (senderAccountBalance.DecodeToNumber() - transaction.Amount).EncodeNumber();
+                }
 
-                var recieverAccount = chain.Accounts.FirstOrDefault(a => a.Address == transaction.FromAddress);
-                chain.Accounts.Remove(recieverAccount);
-                recieverAccount.Balance = (recieverAccount.Balance.DecodeToNumber() + transaction.Amount).EncodeNumber();
-                chain.Accounts.Add(recieverAccount);
+                var recieverAccountBalance = chain.Accounts.FirstOrDefault(a => a.Address == transaction.ToAddress.Decrypt()).Balance;
+                chain.Accounts.FirstOrDefault(a => a.Address == transaction.ToAddress.Decrypt()).Balance = (recieverAccountBalance.DecodeToNumber() + transaction.Amount).EncodeNumber();
             }
 
             chain.PendingTransactions = new List<Transaction>();

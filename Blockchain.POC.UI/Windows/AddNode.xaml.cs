@@ -28,23 +28,21 @@ namespace Blockchain.POC.UI
             {
                 P2PClient.Client client = new P2PClient.Client(_globalManager);
 
+                var dictionnary = new Dictionary<string, WebSocket>();
                 string url = $"ws://localhost:{int.Parse(Port.Text)}/BlockchainPOC";
-
-                var dictionnary = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket> ?? new Dictionary<string, WebSocket>();
-
-                dictionnary.Add(url, client.Connect(url, _globalManager.LoadLocalBlockChain()));
+                dictionnary.Add(url, client.Connect(url, _chain));
+                client.urlwebSockets = dictionnary;
+                client.Send(url, "Show me your blockchain !");
 
                 App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
-                Home homeWindow = new Home
+                new Home
                 {
                     Left = this.Left,
                     Top = this.Top
-                };
+                }.Show();
 
-                homeWindow.Show();
-
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(150);
 
                 this.Close();
             }

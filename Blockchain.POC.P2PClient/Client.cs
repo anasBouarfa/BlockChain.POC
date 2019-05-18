@@ -51,6 +51,10 @@ namespace Blockchain.POC.P2PClient
                                 }
                             }
                         }
+                        else
+                        {
+                            _globalManager.SaveBlockChain(remoteChain);
+                        }
                     }
                     else
                     {

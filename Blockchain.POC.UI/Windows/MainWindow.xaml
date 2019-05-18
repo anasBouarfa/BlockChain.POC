@@ -16,7 +16,6 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock x:Name="FullName" Text="{Binding ElementName=Message}" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
             <TextBlock Text="Log in : " FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
             <Grid Margin="10 5 10 0">
                 <Grid.ColumnDefinitions>

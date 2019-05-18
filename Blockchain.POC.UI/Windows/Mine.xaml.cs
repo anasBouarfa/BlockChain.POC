@@ -1,4 +1,5 @@
 ﻿using Blockchain.POC.Common;
+using Blockchain.POC.Entities;
 using System.Collections.Generic;
 using System.Windows;
 using WebSocketSharp;
@@ -12,8 +13,8 @@ namespace Blockchain.POC.UI
     {
         public Mine() : base()
         {
-            _chain = _globalManager.LoadLocalBlockChain();
             InitializeComponent();
+            DataContext = new { PTCount = _chain.PendingTransactions.Count, Reward = BlockChain.Reward };
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -32,7 +33,6 @@ namespace Blockchain.POC.UI
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             _chain = _globalManager.AddBlock(_chain);
-            _globalManager.SaveBlockChain(_chain);
 
             P2PClient.Client client = new P2PClient.Client(_globalManager)
             {

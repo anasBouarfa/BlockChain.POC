@@ -18,19 +18,19 @@
         <TextBlock Text="Mine :" FontSize="20" Margin="10 20 0 0" FontWeight="Bold" />
         <Grid Margin="10 5 10 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Pending transactions : " FontWeight="Bold" FontSize="15" Grid.Column="0" />
-            <TextBlock Text="" Grid.Column="1" />
+            <TextBlock Text="{Binding PTCount}" Grid.Column="1" />
         </Grid>
         <Grid Margin="10 5 10 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Reward :" FontWeight="Bold" FontSize="15" Grid.Column="0" />
-            <TextBlock Text="" Grid.Column="1" />
+            <TextBlock Text="{Binding Reward}" Grid.Column="1" />
         </Grid>
 
         <Button Name="Submit" Content="Mine" Margin="10 15 10 0" Click="Submit_Click" Background="SkyBlue" FontWeight="DemiBold" />

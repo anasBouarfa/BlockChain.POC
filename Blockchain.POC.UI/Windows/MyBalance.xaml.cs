@@ -1,5 +1,6 @@
 ﻿using Blockchain.POC.Common;
 using System.Linq;
+using System;
 using System.Windows;
 
 namespace Blockchain.POC.UI
@@ -19,7 +20,7 @@ namespace Blockchain.POC.UI
             DataContext = new
             {
                 balance,
-                finalBalance = int.Parse(balance) + pendingTransactions.Sum(s => s.ToAddress == "You" ? s.Amount : s.FromAddress == "You" ? -s.Amount : s.Amount)
+                finalBalance = int.Parse(balance) + (pendingTransactions.IsNullOrEmpty() ? 0 : pendingTransactions.Sum(s => s.ToAddress == "You" ? s.Amount : s.FromAddress == "You" ? -s.Amount : s.Amount))
             };
         }
 

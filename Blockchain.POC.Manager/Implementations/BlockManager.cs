@@ -18,7 +18,7 @@ namespace Blockchain.POC.Manager
             var leadingZeros = new string('0', BlockChain.Difficulty);
             string hash = new string(' ', 128);
 
-            while (block.Hash.IsNullOrWhitespace() || block.Hash.Substring(0, BlockChain.Difficulty) != leadingZeros)
+            while (hash.IsNullOrWhitespace() || hash.Substring(0, BlockChain.Difficulty) != leadingZeros)
             {
                 block.Nonce++;
                 hash = CalculateBlockHash(block);
