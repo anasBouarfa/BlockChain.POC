@@ -57,14 +57,6 @@
                 <TextBlock Text="Date of birth" FontWeight="Bold" FontSize="15" Grid.Column="0" />
                 <DatePicker Name="DateOfBirth" Grid.Column="1" />
             </Grid>
-            <Grid Margin="10 5 10 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Port " FontWeight="Bold" FontSize="15" Grid.Column="0" />
-                <TextBox Name="Port" Grid.Column="1" />
-            </Grid>
             <Button Name="Submit" Content="Sign In" Margin="10 15 10 0" Click ="Submit_Click" />
         </StackPanel>
     </Border>

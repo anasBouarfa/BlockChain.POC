@@ -16,8 +16,8 @@
                 <Image Source="/Content/Images/logo.png" HorizontalAlignment="Center" Grid.Column="0" Height="55" />
                 <TextBlock Text="MyWallet" FontFamily="{StaticResource font}" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" FontSize="43" />
             </Grid>
-            <TextBlock Text="ERROR" FontWeight="Bold" FontSize="30" Margin="10 15 10 0" HorizontalAlignment="Center"  Background="DarkRed"/>
-            <TextBlock Text="{Binding message}" FontWeight="Bold" FontSize="30" Margin="10 15 10 0" HorizontalAlignment="Center"  Background="DarkRed"/>
+            <TextBlock Text="ERROR" FontWeight="Bold" FontSize="30" Margin="10 15 10 0" HorizontalAlignment="Center"  Foreground="DarkRed"/>
+            <TextBlock Text="{Binding message}" FontWeight="Bold" FontSize="25" Margin="10 15 10 0" HorizontalAlignment="Center"  Foreground="DarkRed"/>
             <Button Name="Return" Content="Return" Margin="10 15 10 0" Click ="Return_Click" />
         </StackPanel>
     </Border>

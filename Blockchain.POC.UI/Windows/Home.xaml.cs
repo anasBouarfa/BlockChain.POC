@@ -1,4 +1,4 @@
-﻿using Blockchain.POC.Common;
+﻿ using Blockchain.POC.Common;
 using System.Windows;
 
 namespace Blockchain.POC.UI

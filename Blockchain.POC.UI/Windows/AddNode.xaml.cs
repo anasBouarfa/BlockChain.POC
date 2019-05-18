@@ -49,5 +49,18 @@ namespace Blockchain.POC.UI
                 this.Close();
             }
         }
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            new Home
+            {
+                Left = this.Left,
+                Top = this.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(150);
+
+            this.Close();
+        }
     }
 }
