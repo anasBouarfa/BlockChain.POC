@@ -25,17 +25,23 @@ namespace Blockchain.POC.UI
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
+            BaseWindow baseWindow = new BaseWindow
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
+
             if (IsAuthorized)
             {
-                Home.Redirect(this);
+                baseWindow.Redirect(nameof(Home));
             }
             else
             {
-                MainWindow.Redirect(this);
+                baseWindow.Redirect(nameof(MainWindow));
             }
         }
 
-        public static void Redirect(Window window, string message, bool isAuthorized)
+        public static void View(Window window, string message, bool isAuthorized)
         {
             new Error(message, isAuthorized)
             {

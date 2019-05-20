@@ -26,7 +26,7 @@ namespace Blockchain.POC.UI
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            Home.Redirect(this);
+            Redirect(nameof(Home));
         }
     }
 }

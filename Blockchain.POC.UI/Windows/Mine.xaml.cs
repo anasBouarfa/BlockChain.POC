@@ -19,7 +19,7 @@ namespace Blockchain.POC.UI
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Home.Redirect(this);
+            Redirect(nameof(Home));
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -33,7 +33,7 @@ namespace Blockchain.POC.UI
             client.BroadcastChain(_chain);
             _globalManager.SaveBlockChain(_chain);
 
-            Home.Redirect(this);
+            Redirect(nameof(Home));
         }
     }
 }

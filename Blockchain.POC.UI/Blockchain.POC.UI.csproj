@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CurrentServer.cs" />
+    <Compile Include="TypeProvider.cs" />
     <Compile Include="Windows\AddNode.xaml.cs">
       <DependentUpon>AddNode.xaml</DependentUpon>
     </Compile>

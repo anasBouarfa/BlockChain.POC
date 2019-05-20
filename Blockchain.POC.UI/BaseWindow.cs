@@ -1,6 +1,9 @@
 ﻿using Blockchain.POC.Common;
 using Blockchain.POC.Entities;
 using Blockchain.POC.Manager;
+using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 
 namespace Blockchain.POC.UI
@@ -21,17 +24,18 @@ namespace Blockchain.POC.UI
             Title = $"MyWallet - {_port}";
         }
 
-        public static void Redirect(Window window)
+        public void Redirect(string toWindow)
         {
-            new Home
-            {
-                Left = window.Left,
-                Top = window.Top
-            }.Show();
+            var window = (Window)Activator.CreateInstance(TypeProvider.DefinedTypes.FirstOrDefault(t => t.Name == toWindow));
+
+            window.Left = this.Left;
+            window.Top = this.Top;
+
+            window.Show();
 
             System.Threading.Thread.Sleep(200);
 
-            window.Close();
+            this.Close();
         }
     }
 }

@@ -36,13 +36,13 @@ namespace Blockchain.POC.UI
 
                 App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] = dictionnary;
 
-                Home.Redirect(this);
+                Redirect(nameof(Home));
             }
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            Home.Redirect(this);
+            Redirect(nameof(Home));
         }
     }
 }

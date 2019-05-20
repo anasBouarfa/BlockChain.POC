@@ -32,7 +32,7 @@ namespace Blockchain.POC.UI
                 }
                 else //not authorized
                 {
-                    Error.Redirect(this, "Incorrect credentials", false);
+                    Error.View(this, "Incorrect credentials", false);
                 }
             }
         }
@@ -51,11 +51,11 @@ namespace Blockchain.POC.UI
         {
             if (!isAuthorized)
             {
-                Blockchain.POC.UI.SignIn.Redirect(this);
+                Redirect(nameof(Blockchain.POC.UI.SignIn));
             }
             else
             {
-                Home.Redirect(this);
+                Redirect(nameof(Home));
             }
         }
     }

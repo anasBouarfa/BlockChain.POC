@@ -18,32 +18,32 @@ namespace Blockchain.POC.UI
 
         private void MyBalance_Click(object sender, RoutedEventArgs e)
         {
-            MyBalance.Redirect(this);
+            Redirect(nameof(MyBalance));
         }
 
         private void MyTransactions_Click(object sender, RoutedEventArgs e)
         {
-            History.Redirect(this);
+            Redirect(nameof(History));
         }
 
         private void NewTransaction_Click(object sender, RoutedEventArgs e)
         {
-            NewTransaction.Redirect(this);
+            Redirect(nameof(NewTransaction));
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Redirect(this);
+            Redirect(nameof(MainWindow));
         }
 
         private void ConnectToNode_Click(object sender, RoutedEventArgs e)
         {
-            AddNode.Redirect(this);
+            Redirect(nameof(AddNode));
         }
 
         private void Mine_Click(object sender, RoutedEventArgs e)
         {
-            Mine.Redirect(this);
+            Redirect(nameof(Mine));
         }
     }
 }

@@ -44,11 +44,11 @@ namespace Blockchain.POC.UI
                     client.BroadcastChain(_chain);
                     _globalManager.SaveBlockChain(_chain);
 
-                    Home.Redirect(this);
+                    Redirect(nameof(Home));
                 }
                 else
                 {
-                    Error.Redirect(this, "Insufficient balance", true);
+                    Error.View(this, "Insufficient balance", true);
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace Blockchain.POC.UI
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Home.Redirect(this);
+            Redirect(nameof(Home));
         }
     }
 }
