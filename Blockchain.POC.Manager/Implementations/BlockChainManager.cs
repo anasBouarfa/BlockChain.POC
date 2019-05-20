@@ -34,7 +34,7 @@ namespace Blockchain.POC.Manager
             return false;
         }
 
-        public BlockChain AddBlock(BlockChain chain)
+        public BlockChain AddBlock(BlockChain chain, string minerAddress)
         {
             Block latestBlock = GetLastBlock(chain);
 
@@ -46,6 +46,9 @@ namespace Blockchain.POC.Manager
             block = Mine(block);
 
             chain.Blocks.Add(block);
+
+            chain.PendingTransactions = new List<Transaction>
+            { new Transaction(null, minerAddress.Encrypt(), BlockChain.Reward)};
 
             foreach (var transaction in block.Transactions)
             {

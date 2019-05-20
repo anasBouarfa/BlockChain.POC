@@ -32,7 +32,7 @@ namespace Blockchain.POC.UI
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            _chain = _globalManager.AddBlock(_chain);
+            _chain = _globalManager.AddBlock(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
 
             P2PClient.Client client = new P2PClient.Client(_globalManager)
             {
