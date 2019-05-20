@@ -20,5 +20,18 @@ namespace Blockchain.POC.UI
             _message = string.Empty;
             Title = $"MyWallet - {_port}";
         }
+
+        public static void Redirect(Window window)
+        {
+            new Home
+            {
+                Left = window.Left,
+                Top = window.Top
+            }.Show();
+
+            System.Threading.Thread.Sleep(200);
+
+            window.Close();
+        }
     }
 }

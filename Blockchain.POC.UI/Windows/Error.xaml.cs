@@ -25,26 +25,27 @@ namespace Blockchain.POC.UI
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            if(IsAuthorized)
+            if (IsAuthorized)
             {
-                new Home
-                {
-                    Left = this.Left,
-                    Top = this.Top
-                }.Show();
+                Home.Redirect(this);
             }
             else
             {
-                new MainWindow
-                {
-                    Left = this.Left,
-                    Top = this.Top
-                }.Show();
+                MainWindow.Redirect(this);
             }
+        }
 
-            System.Threading.Thread.Sleep(150);
+        public static void Redirect(Window window, string message, bool isAuthorized)
+        {
+            new Error(message, isAuthorized)
+            {
+                Top = window.Top,
+                Left = window.Left
+            }.Show();
 
-            this.Close();
+            System.Threading.Thread.Sleep(200);
+
+            window.Close();
         }
     }
 }

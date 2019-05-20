@@ -32,17 +32,7 @@ namespace Blockchain.POC.UI
                 }
                 else //not authorized
                 {
-                    _message = "Incorrect credentials";
-
-                    new Error(_message, false)
-                    {
-                        Left = this.Left,
-                        Top = this.Top
-                    }.Show();
-
-                    System.Threading.Thread.Sleep(200);
-
-                    this.Close();
+                    Error.Redirect(this, "Incorrect credentials", false);
                 }
             }
         }
@@ -61,24 +51,12 @@ namespace Blockchain.POC.UI
         {
             if (!isAuthorized)
             {
-                new SignIn
-                {
-                    Left = this.Left,
-                    Top = this.Top
-                }.Show();
+                Blockchain.POC.UI.SignIn.Redirect(this);
             }
             else
             {
-                new Home
-                {
-                    Left = this.Left,
-                    Top = this.Top
-                }.Show();
+                Home.Redirect(this);
             }
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
         }
     }
 }

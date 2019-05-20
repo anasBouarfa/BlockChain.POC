@@ -1,6 +1,6 @@
 ﻿using Blockchain.POC.Common;
-using System.Linq;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace Blockchain.POC.UI
@@ -26,15 +26,7 @@ namespace Blockchain.POC.UI
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            new Home()
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            Home.Redirect(this);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Blockchain.POC.Manager
             chain.Blocks.Add(block);
 
             chain.PendingTransactions = new List<Transaction>
-            { new Transaction(null, minerAddress.Encrypt(), BlockChain.Reward)};
+            { new Transaction(null, minerAddress, BlockChain.Reward)};
 
             foreach (var transaction in block.Transactions)
             {

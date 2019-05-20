@@ -21,8 +21,8 @@
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Address " FontWeight="Bold" FontSize="15" Grid.Column="0" />
-            <TextBox Name="Address" Grid.Column="1" />
+            <TextBlock Text="Username " FontWeight="Bold" FontSize="15" Grid.Column="0" />
+            <TextBox Name="Username" Grid.Column="1" />
         </Grid>
         <Grid Margin="10 5 10 0">
             <Grid.ColumnDefinitions>

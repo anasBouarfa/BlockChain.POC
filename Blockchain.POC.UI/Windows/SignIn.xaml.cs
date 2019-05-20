@@ -35,30 +35,12 @@ namespace Blockchain.POC.UI
 
                 _globalManager.SaveBlockChain(_chain);
 
-                new Home
-                {
-                    Top = this.Top,
-                    Left = this.Left
-                }.Show();
-
-                System.Threading.Thread.Sleep(200);
-
-                this.Close();
+                Home.Redirect(this);
             }
             else
             {
-                new Error("Account could not be created", false)
-                {
-                    Top = this.Top,
-                    Left = this.Left
-                }.Show();
-
-                System.Threading.Thread.Sleep(200);
-
-                this.Close();
+                Error.Redirect(this, "Account could not be created", false);
             }
-
-
         }
     }
 }

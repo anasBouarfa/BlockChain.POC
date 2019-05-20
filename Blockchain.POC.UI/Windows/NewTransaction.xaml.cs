@@ -22,14 +22,14 @@ namespace Blockchain.POC.UI
         {
             var address = App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string;
 
-            if (_globalManager.IsAccountUsernameValid(_chain, Address.Text) && Address.Text != address)
+            if (_globalManager.IsAccountUsernameValid(_chain, Username.Text) && Username.Text != _globalManager.GetAccountByAddress(_chain, address).Username.Decrypt())
             {
-                var account = _globalManager.GetAccountByUsername(_chain, Address.Text);
+                var account = _globalManager.GetAccountByUsername(_chain, Username.Text);
 
                 int balance = _globalManager.GetAccountBalance(_chain, address);
                 int currentBalance = balance + _globalManager.GetPendingTransactionsBaluByAddress(_chain, address);
 
-                if(balance <= currentBalance && balance >= int.Parse(Amount.Text))
+                if (balance <= currentBalance && balance >= int.Parse(Amount.Text))
                 {
                     if (!_chain.PendingTransactions.IsNullOrEmpty())
                         _chain.PendingTransactions.Add(new Transaction(address, account.Address, int.Parse(Amount.Text)));
@@ -43,10 +43,12 @@ namespace Blockchain.POC.UI
 
                     client.BroadcastChain(_chain);
                     _globalManager.SaveBlockChain(_chain);
+
+                    Home.Redirect(this);
                 }
                 else
                 {
-                    //TODO: balance insufficiant
+                    Error.Redirect(this, "Insufficient balance", true);
                 }
             }
         }
@@ -58,15 +60,7 @@ namespace Blockchain.POC.UI
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            new Home()
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(250);
-
-            this.Close();
+            Home.Redirect(this);
         }
     }
 }

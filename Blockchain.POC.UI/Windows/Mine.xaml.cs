@@ -19,15 +19,7 @@ namespace Blockchain.POC.UI
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            new Home()
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(150);
-
-            this.Close();
+            Home.Redirect(this);
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -41,15 +33,7 @@ namespace Blockchain.POC.UI
             client.BroadcastChain(_chain);
             _globalManager.SaveBlockChain(_chain);
 
-            new Home()
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(150);
-
-            this.Close();
+            Home.Redirect(this);
         }
     }
 }

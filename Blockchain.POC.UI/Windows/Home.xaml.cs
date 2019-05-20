@@ -1,4 +1,4 @@
-﻿ using Blockchain.POC.Common;
+﻿using Blockchain.POC.Common;
 using System.Windows;
 
 namespace Blockchain.POC.UI
@@ -18,80 +18,32 @@ namespace Blockchain.POC.UI
 
         private void MyBalance_Click(object sender, RoutedEventArgs e)
         {
-            new MyBalance
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            MyBalance.Redirect(this);
         }
 
         private void MyTransactions_Click(object sender, RoutedEventArgs e)
         {
-            new History
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            History.Redirect(this);
         }
 
         private void NewTransaction_Click(object sender, RoutedEventArgs e)
         {
-            new NewTransaction
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            NewTransaction.Redirect(this);
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            MainWindow.Redirect(this);
         }
 
         private void ConnectToNode_Click(object sender, RoutedEventArgs e)
         {
-            new AddNode
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            AddNode.Redirect(this);
         }
 
         private void Mine_Click(object sender, RoutedEventArgs e)
         {
-            new Mine
-            {
-                Left = this.Left,
-                Top = this.Top
-            }.Show();
-
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
+            Mine.Redirect(this);
         }
     }
 }

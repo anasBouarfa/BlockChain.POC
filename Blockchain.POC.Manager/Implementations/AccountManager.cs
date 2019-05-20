@@ -49,11 +49,9 @@ namespace Blockchain.POC.Manager
             return chain.Accounts.FirstOrDefault(a => a.Username == username.Encrypt());
         }
 
-        public string GetFullnameAccountByAddress(BlockChain chain, string address)
+        public Account GetAccountByAddress(BlockChain chain, string address)
         {
-            var account = chain.Accounts.FirstOrDefault(a => a.Address == address);
-
-            return account.FirstName + " " + account.LastName;
+            return chain.Accounts.FirstOrDefault(a => a.Address == address);
         }
 
         public bool IsAccountUsernameValid(BlockChain chain, string username)
