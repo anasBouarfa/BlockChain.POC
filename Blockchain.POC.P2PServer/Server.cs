@@ -48,6 +48,9 @@ namespace Blockchain.POC.P2PServer
 
                     if (!_globalManager.IsLocalBlockChainUpToDate(localChain, remoteChain))
                     {
+                        localChain.Blocks = remoteChain.Blocks;
+                        localChain.PendingTransactions = remoteChain.PendingTransactions;
+
                         updateBlockchain = true;
                     }
 

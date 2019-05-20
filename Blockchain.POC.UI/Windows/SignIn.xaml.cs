@@ -1,6 +1,7 @@
 ﻿using Blockchain.POC.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using WebSocketSharp;
 
@@ -23,24 +24,41 @@ namespace Blockchain.POC.UI
 
             if (_chain != null)
             {
+                App.Current.Properties[ApplicationPropertiesConstants.UserAddress] = _chain.Accounts.FirstOrDefault(a => a.Username == Username.Text.Encrypt()).Address;
+
                 P2PClient.Client client = new P2PClient.Client(_globalManager)
                 {
                     urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
                 };
 
                 client.BroadcastChain(_chain);
+
                 _globalManager.SaveBlockChain(_chain);
+
+                new Home
+                {
+                    Top = this.Top,
+                    Left = this.Left
+                }.Show();
+
+                System.Threading.Thread.Sleep(200);
+
+                this.Close();
+            }
+            else
+            {
+                new Error("Account could not be created", false)
+                {
+                    Top = this.Top,
+                    Left = this.Left
+                }.Show();
+
+                System.Threading.Thread.Sleep(200);
+
+                this.Close();
             }
 
-            new Home
-            {
-                Top = this.Top,
-                Left = this.Left
-            }.Show();
 
-            System.Threading.Thread.Sleep(200);
-
-            this.Close();
         }
     }
 }

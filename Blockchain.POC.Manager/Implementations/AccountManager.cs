@@ -23,7 +23,7 @@ namespace Blockchain.POC.Manager
             if (!username.IsNullOrWhitespace() &&
                !password.IsNullOrWhitespace())
             {
-                if (!chain.Accounts.Select(s => s.Username).Any(a => a == username.Encrypt()))
+                if (!chain.Accounts.Select(s => s.Username).Contains(username.Encrypt()))
                 {
                     var account = new Account(username, password, firstname, lastname, dateOfBirth);
                     account.Balance = "0";

@@ -12,6 +12,6 @@ namespace Blockchain.POC.Entities
 
         public const int Difficulty = 2;
 
-        public const int Reward = 1; //1 cryptocurrency
+        public const int Reward = 5; //1 cryptocurrency
     }
 }
