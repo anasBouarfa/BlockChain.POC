@@ -13,6 +13,7 @@ namespace Blockchain.POC.UI
         public MainWindow() : base()
         {
             InitializeComponent();
+            App.Current.Properties[ApplicationPropertiesConstants.UserAddress] = null;
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
