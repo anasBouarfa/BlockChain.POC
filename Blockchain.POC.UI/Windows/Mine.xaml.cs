@@ -1,6 +1,7 @@
 ﻿using Blockchain.POC.Common;
 using Blockchain.POC.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using WebSocketSharp;
 
@@ -24,16 +25,23 @@ namespace Blockchain.POC.UI
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            _chain = _globalManager.AddBlock(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
-
-            P2PClient.Client client = new P2PClient.Client(_globalManager)
+            if(_chain.PendingTransactions.Any())
             {
-                urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
-            };
-            client.BroadcastChain(_chain);
-            _globalManager.SaveBlockChain(_chain);
+                _chain = _globalManager.AddBlock(_chain, App.Current.Properties[ApplicationPropertiesConstants.UserAddress] as string);
 
-            Redirect(nameof(Home));
+                P2PClient.Client client = new P2PClient.Client(_globalManager)
+                {
+                    urlwebSockets = App.Current.Properties[ApplicationPropertiesConstants.PortUrlWebSockets] as Dictionary<string, WebSocket>
+                };
+                client.BroadcastChain(_chain);
+                _globalManager.SaveBlockChain(_chain);
+
+                Redirect(nameof(Home));
+            }
+            else
+            {
+                Error.View(this, "There are no pending transactions", true);
+            }
         }
     }
 }

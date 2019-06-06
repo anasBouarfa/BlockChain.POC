@@ -22,7 +22,7 @@ namespace Blockchain.POC.ConfigurationConsole
 
             Account firstAccount = new Account("admin", "12345", "admin", "admin", new DateTime(1998, 9, 9))
             {
-                Balance = (1).EncodeNumber()
+                Balance = BlockChain.Reward.ToString()
             };
 
             Transaction initialTransaction = new Transaction(null, firstAccount.Address, BlockChain.Reward);
