@@ -33,7 +33,10 @@ namespace Blockchain.POC.ConfigurationConsole
                 {
                     _globalManager.EncryptAccount(firstAccount)
                 },
-                PendingTransactions = new List<Transaction>()
+                PendingTransactions = new List<Transaction>
+                {
+                    new Transaction(null, firstAccount.Address, BlockChain.Reward, true)
+                }
             };
 
             var block = new Block(DateTime.Now, null, new List<Transaction>() { initialTransaction });

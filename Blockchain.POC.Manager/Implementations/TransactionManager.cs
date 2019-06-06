@@ -23,7 +23,7 @@ namespace Blockchain.POC.Manager
 
         public string GetUserNameByAddress(BlockChain chain, string address)
         {
-            return chain.Accounts.FirstOrDefault(a => a.Address == address.Decrypt()).Username;
+            return chain.Accounts.FirstOrDefault(a => a.Address == address.Decrypt()).Username.Decrypt();
         }
 
         public List<Transaction> GetPendingTransactionsByAddress(BlockChain chain, string address)
@@ -35,8 +35,8 @@ namespace Blockchain.POC.Manager
                 var recieved = chain.PendingTransactions.Where(t => t.ToAddress == address);
                 var created = chain.PendingTransactions.Where(t => t.FromAddress == address);
 
-                recieved = recieved.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
-                created = created.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress.Decrypt()), "You", s.Amount, false));
+                recieved = recieved.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress), "You", s.Amount, false));
+                created = created.Select(s => new Transaction(s.FromAddress.IsNullOrWhitespace() ? "system" : GetUserNameByAddress(chain, s.FromAddress), "You", s.Amount, false));
 
                 return recieved.Union(created).OrderByDescending(o => o.CreationDate).ToList();
             }
