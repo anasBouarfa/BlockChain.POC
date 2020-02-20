@@ -19,9 +19,9 @@ namespace Blockchain.POC.Test
         }
 
         [TestMethod]
-        [DataRow("Oumaima Mdaghri")]
-        [DataRow("j'ai fais les courses")]
-        [DataRow("Accenture")]
+        [DataRow("Anas Bouarfa")]
+        [DataRow("I am testing at this very moment")]
+        [DataRow("Please Work !")]
         public void EncryptTest(string text)
         {
             string tested = text.Encrypt();

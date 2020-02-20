@@ -231,7 +231,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Blockchains\init.txt.txt">
+    <Resource Include="Blockchains\12900.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
